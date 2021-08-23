@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Food_Organizer</string>
+    <string name="create_profile">Create Profile</string>
+    <string name="create_your_profile">Create your Profile</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="set_password">Set Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="set_username">Set UserName</string>
+    <string name="information">I accept all the information given is true</string>
+    <string name="gender">Gender</string>
+    <string name="signin">SignIn</string>
+    <string name="signup">SignUp</string>
+    <string name="mail">Mail</string>
+    <string name="password">Password</string>
+    <string name="already_a_user">Already a User?</string>
+    <string name="or">Or</string>
 </resources>
