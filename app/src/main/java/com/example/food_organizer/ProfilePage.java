@@ -36,14 +36,20 @@ public class ProfilePage extends AppCompatActivity {
         crtProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                databaseHelper obj=new databaseHelper(ProfilePage.this);
                 try{
 
                     Customer newProfile=new Customer(name.getText().toString(),gender.getText().toString(),phone.getText().toString(),mail.getText().toString(),userName.getText().toString(),password.getText().toString(),cPassword.getText().toString(),tick.isChecked());
                     // Toast.makeText(ProfilePage.this, newProfile.toString(), Toast.LENGTH_SHORT).show();
-                    Toast.makeText(ProfilePage.this,"hii", Toast.LENGTH_SHORT).show();
+                    obj.addUser(newProfile);
+                    Toast.makeText(ProfilePage.this,"creating profile", Toast.LENGTH_SHORT).show();
+
+
+
 
 
                 }
+
                 catch(Exception e){
                     Toast.makeText(ProfilePage.this, "Please check all the details", Toast.LENGTH_SHORT).show();
                 }
