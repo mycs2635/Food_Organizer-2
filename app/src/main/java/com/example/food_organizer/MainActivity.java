@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button signUp,signIn;
     EditText email,password;
+    databaseHelper db = new databaseHelper(MainActivity.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                databaseHelper db = new databaseHelper(MainActivity.this);
                // if(db.checkEmail(email.getText().toString())){
                     if(db.checkPassword(email.getText().toString(),password.getText().toString())) {
                         Toast.makeText(MainActivity.this, "Welcome Back!!!", Toast.LENGTH_SHORT).show();
