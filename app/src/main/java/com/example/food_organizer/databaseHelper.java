@@ -2,6 +2,7 @@ package com.example.food_organizer;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -33,9 +34,10 @@ public class databaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-
+        db.execSQL("DROP TABLE IF EXISTS "+DATABASE_TABLE);
+        onCreate(db);
     }
-    public void addUser(Customer c )
+    public boolean addUser(Customer c )
     {
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues cv=new ContentValues();
@@ -45,7 +47,37 @@ public class databaseHelper extends SQLiteOpenHelper {
         cv.put(KEY_PHONE,c.getPhone());
         cv.put(KEY_USERNAME,c.getUserName());
         cv.put(KEY_PASSWORD,c.getPassword());
-        db.insert(DATABASE_TABLE,null,cv);
-        db.close();
+        long result = db.insert(DATABASE_TABLE,null,cv);
+        return result != -1;
+        //db.close();
     }
+    public boolean checkEmail(String mail){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * from userInfo where email = ?", new String[] {mail});
+        return cursor.getCount() > 0;
+    }
+
+    public boolean checkPassword(String mail, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * from userInfo where email = ? and password = ?", new String[] {mail,password});
+        return cursor.getCount() > 0;
+    }
+
+//    public Customer getUser(String mail){
+//        SQLiteDatabase db=this.getReadableDatabase();
+//        ContentValues cv=new ContentValues();
+//        Cursor cursor = db.query(DATABASE_TABLE,
+//                new String[] {KEY_ID,KEY_NAME,KEY_GENDER,KEY_EMAIL,KEY_PHONE,KEY_USERNAME,KEY_PASSWORD},
+//                KEY_EMAIL+"=?",
+//                new String[] {mail},
+//                null,
+//                null,
+//                null,
+//                null);
+//        if(cursor!=null){
+//            cursor.moveToFirst();
+//
+//        }
+//      //  Cursor cursor = db.rawQuery("SELECT * from users where ")
+//    }
 }

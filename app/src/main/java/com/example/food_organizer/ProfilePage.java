@@ -37,26 +37,67 @@ public class ProfilePage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 databaseHelper obj=new databaseHelper(ProfilePage.this);
-                try{
+                if(checkAllTextFields()){
 
                     Customer newProfile=new Customer(name.getText().toString(),gender.getText().toString(),phone.getText().toString(),mail.getText().toString(),userName.getText().toString(),password.getText().toString(),cPassword.getText().toString(),tick.isChecked());
                     // Toast.makeText(ProfilePage.this, newProfile.toString(), Toast.LENGTH_SHORT).show();
                     obj.addUser(newProfile);
                     Toast.makeText(ProfilePage.this,"creating profile", Toast.LENGTH_SHORT).show();
 
-
-
-
-
                 }
 
-                catch(Exception e){
-                    Toast.makeText(ProfilePage.this, "Please check all the details", Toast.LENGTH_SHORT).show();
-                }
+//                else{
+//                    Toast.makeText(ProfilePage.this, "Please check all the details", Toast.LENGTH_SHORT).show();
+//                }
 
 
             }
         });
 
+    }
+    private boolean checkAllTextFields(){
+        if(name.length() == 0){
+            name.setError("This field is required");
+            return false;
+        }
+        if(gender.length() == 0){
+            gender.setError("This field is required");
+            return false;
+        }
+        if(phone.length() == 0){
+            phone.setError("This field is required");
+            return false;
+        }
+        if(mail.length() == 0){
+            mail.setError("This field is required");
+            return false;
+        }
+        if(userName.length() == 0){
+            userName.setError("This field is required");
+            return false;
+        }
+        if(password.length() == 0){
+            password.setError("This field is required");
+            return false;
+        }
+        else if(password.length() <= 8){
+            password.setError("password length should be at least 8");
+            return false;
+        }
+        if(cPassword.length() == 0){
+            name.setError("This field is required");
+            return false;
+        }
+        else if (!cPassword.getText().toString().equals(password.getText().toString())){
+            cPassword.setError("This field should be matched with password");
+            return false;
+        }
+
+//        if(!tick.isActivated()){
+//            tick.setError("This field is required");
+//            return false;
+//        }
+
+        return true;
     }
 }
