@@ -85,7 +85,7 @@ public class ProfilePage extends AppCompatActivity {
             return false;
         }
         if(cPassword.length() == 0){
-            name.setError("This field is required");
+            cPassword.setError("This field is required");
             return false;
         }
         else if (!cPassword.getText().toString().equals(password.getText().toString())){
