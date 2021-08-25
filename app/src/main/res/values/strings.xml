@@ -16,5 +16,7 @@
     <string name="password">Password</string>
     <string name="already_a_user">Already a User?</string>
     <string name="or">Or</string>
+    <string name="users_info">Users Info</string>
+    <string name="viewall">ViewAll</string>
 
 </resources>

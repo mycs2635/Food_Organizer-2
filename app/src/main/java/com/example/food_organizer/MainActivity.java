@@ -9,10 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+public class MainActivity extends AppCompatActivity {
     Button signUp,signIn;
     EditText email,password;
+
     databaseHelper db = new databaseHelper(MainActivity.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +38,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                // if(db.checkEmail(email.getText().toString())){
-                if(email.getText().toString().equals("admin")&&password.getText().toString().equals("123456789")){
-                    Intent gotoHomePage = new Intent(MainActivity.this,HomePage.class);
-                    startActivity(gotoHomePage);
-
-                }
-                    else if(db.checkPassword(email.getText().toString(),password.getText().toString())) {
+                    if(db.checkPassword(email.getText().toString(),password.getText().toString())) {
                         Toast.makeText(MainActivity.this, "Welcome Back!!!", Toast.LENGTH_SHORT).show();
                         Intent gotoHomePage = new Intent(MainActivity.this,HomePage.class);
                         startActivity(gotoHomePage);

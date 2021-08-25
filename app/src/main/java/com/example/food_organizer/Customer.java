@@ -10,15 +10,15 @@ public class Customer {
     private boolean box;
 
 
-    public Customer (String name, String gender, String phone, String mail, String userName, String password, String cPassword,boolean box) {
+    public Customer (String name, String gender, String phone, String mail, String userName, String password) {
         this.name = name;
         this.gender = gender;
         this.phone = phone;
         this.mail = mail;
         this.userName = userName;
         this.password = password;
-        this.cPassword = cPassword;
-        this.box=box;
+//        this.cPassword = cPassword;
+//        this.box=box;
 
     }
 
