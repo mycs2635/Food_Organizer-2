@@ -10,11 +10,17 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class ProfilePage extends AppCompatActivity {
 
     Button crtProfile;
     EditText name,gender,phone,mail,userName,password,cPassword;
     CheckBox tick;
+
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +45,17 @@ public class ProfilePage extends AppCompatActivity {
                 databaseHelper obj=new databaseHelper(ProfilePage.this);
                 if(checkAllTextFields()){
 
-                    Customer newProfile=new Customer(name.getText().toString(),gender.getText().toString(),phone.getText().toString(),mail.getText().toString(),userName.getText().toString(),password.getText().toString(),cPassword.getText().toString(),tick.isChecked());
+                    rootNode = FirebaseDatabase.getInstance();
+                    reference = rootNode.getReference("users");
+                    Customer newProfile=new Customer(name.getText().toString(),
+                            gender.getText().toString(),
+                            phone.getText().toString(),
+                            mail.getText().toString(),
+                            userName.getText().toString(),
+                            password.getText().toString());
+                    reference.child(phone.getText().toString()).setValue(newProfile);
                     // Toast.makeText(ProfilePage.this, newProfile.toString(), Toast.LENGTH_SHORT).show();
+
                     obj.addUser(newProfile);
                     Toast.makeText(ProfilePage.this,"creating profile", Toast.LENGTH_SHORT).show();
 
@@ -80,7 +95,7 @@ public class ProfilePage extends AppCompatActivity {
             password.setError("This field is required");
             return false;
         }
-        else if(password.length() <= 8){
+        else if(password.length() < 6){
             password.setError("password length should be at least 8");
             return false;
         }
