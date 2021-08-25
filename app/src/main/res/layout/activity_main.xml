@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_orange_dark"
+    android:background="@android:color/holo_blue_bright"
     tools:context=".MainActivity">
 
     <Button
@@ -47,8 +47,8 @@
 
     <EditText
         android:id="@+id/etMaillogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="266dp"
+        android:layout_height="53dp"
         android:autofillHints="name"
         android:background="?android:attr/colorActivatedHighlight"
         android:ems="10"
@@ -63,8 +63,8 @@
 
     <EditText
         android:id="@+id/etPasswordlogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="268dp"
+        android:layout_height="49dp"
         android:autofillHints="password"
         android:ems="10"
         android:hint="@string/password"
@@ -102,10 +102,14 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="164dp"
+        android:layout_height="143dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/divider_horizontal_bright"
-        tools:layout_editor_absoluteY="100dp" />
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.139"
+        app:srcCompat="@drawable/foodsaveimage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
