@@ -46,11 +46,11 @@ public class ProfilePage extends AppCompatActivity {
         cPassword=findViewById(R.id.etConfrmPassPrfl);
         tick=findViewById(R.id.checkBoxPrfl);
 
-        if(mAuth.getCurrentUser() != null){
-            Intent gotoHome = new Intent(getApplicationContext(),HomePage.class);
-            startActivity(gotoHome);
-            finish();
-        }
+//        if(mAuth.getCurrentUser() != null){
+//            Intent gotoHome = new Intent(getApplicationContext(),HomePage.class);
+//            startActivity(gotoHome);
+//            finish();
+//        }
         //button listener for create profile
         crtProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,13 +66,13 @@ public class ProfilePage extends AppCompatActivity {
                             mail.getText().toString(),
                             userName.getText().toString(),
                             password.getText().toString());
-//                    reference.child(phone.getText().toString()).setValue(newProfile);
+                    reference.child(phone.getText().toString()).setValue(newProfile);
                     mAuth.createUserWithEmailAndPassword(mail.getText().toString(),password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(ProfilePage.this,"User created successfully",Toast.LENGTH_SHORT).show();
-                                Intent gotoHome = new Intent(getApplicationContext(),HomePage.class);
+                                Intent gotoHome = new Intent(ProfilePage.this,HomePage.class);
                                 startActivity(gotoHome);
                             }
                         }
