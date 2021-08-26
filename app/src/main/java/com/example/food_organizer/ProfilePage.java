@@ -1,5 +1,6 @@
 package com.example.food_organizer;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,6 +11,10 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -18,6 +23,8 @@ public class ProfilePage extends AppCompatActivity {
     Button crtProfile;
     EditText name,gender,phone,mail,userName,password,cPassword;
     CheckBox tick;
+
+    FirebaseAuth mAuth;
 
     FirebaseDatabase rootNode;
     DatabaseReference reference;
@@ -28,6 +35,7 @@ public class ProfilePage extends AppCompatActivity {
         //signup button opens profile page
         Intent receive = getIntent();
         //
+        mAuth = FirebaseAuth.getInstance();
         crtProfile=findViewById(R.id.bt_createprofile);
         name=findViewById(R.id.etNamePrfl);
         gender=findViewById(R.id.etGenderPrfl);
@@ -38,6 +46,11 @@ public class ProfilePage extends AppCompatActivity {
         cPassword=findViewById(R.id.etConfrmPassPrfl);
         tick=findViewById(R.id.checkBoxPrfl);
 
+        if(mAuth.getCurrentUser() != null){
+            Intent gotoHome = new Intent(getApplicationContext(),HomePage.class);
+            startActivity(gotoHome);
+            finish();
+        }
         //button listener for create profile
         crtProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +66,17 @@ public class ProfilePage extends AppCompatActivity {
                             mail.getText().toString(),
                             userName.getText().toString(),
                             password.getText().toString());
-                    reference.child(phone.getText().toString()).setValue(newProfile);
+//                    reference.child(phone.getText().toString()).setValue(newProfile);
+                    mAuth.createUserWithEmailAndPassword(mail.getText().toString(),password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(ProfilePage.this,"User created successfully",Toast.LENGTH_SHORT).show();
+                                Intent gotoHome = new Intent(getApplicationContext(),HomePage.class);
+                                startActivity(gotoHome);
+                            }
+                        }
+                    });
                     // Toast.makeText(ProfilePage.this, newProfile.toString(), Toast.LENGTH_SHORT).show();
 
                     obj.addUser(newProfile);
@@ -68,7 +91,6 @@ public class ProfilePage extends AppCompatActivity {
 
             }
         });
-
     }
     private boolean checkAllTextFields(){
         if(name.length() == 0){
