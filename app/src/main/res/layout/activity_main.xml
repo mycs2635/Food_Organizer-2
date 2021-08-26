@@ -50,7 +50,6 @@
         android:layout_width="266dp"
         android:layout_height="53dp"
         android:autofillHints="name"
-        android:background="?android:attr/colorActivatedHighlight"
         android:ems="10"
         android:hint="@string/mail"
         android:inputType="textPersonName"
