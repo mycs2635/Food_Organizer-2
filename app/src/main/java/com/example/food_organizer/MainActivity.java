@@ -10,19 +10,26 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TableLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     Button signUp,signIn;
     EditText email,password;
     ProgressBar bar;
+
     private FirebaseAuth mAuth;
     databaseHelper db = new databaseHelper(MainActivity.this);
     @Override
@@ -30,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //code for button
-
         mAuth = FirebaseAuth.getInstance();
 
         signUp = findViewById(R.id.buttonSignUplogin);
@@ -60,32 +66,122 @@ public class MainActivity extends AppCompatActivity {
 //                        Toast.makeText(MainActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                 String Email = email.getText().toString().trim();
                 String Password = password.getText().toString().trim();
-                if(TextUtils.isEmpty(Email)){
-                    email.setError("Email is required");
+//                if(TextUtils.isEmpty(Email)){
+//                    email.setError("Email is required");
+//                    return;
+//                }
+//                if(TextUtils.isEmpty(Password)){
+//                    password.setError("Password is required");
+//                    return;
+//                }
+//                if(Password.length() < 6){
+//                    password.setError("Password must be at least 8 characters long");
+//                    return;
+//                }
+                if(!validateEmail() | !validatePass()){
+                    Toast.makeText(MainActivity.this,"check your details",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(TextUtils.isEmpty(Password)){
-                    password.setError("Password is required");
-                    return;
-                }
-                if(Password.length() < 6){
-                    password.setError("Password must be at least 8 characters long");
-                    return;
-                }
-                bar.setVisibility(View.VISIBLE);
-                mAuth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(MainActivity.this,"Logged in succesfully",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(MainActivity.this,HomePage.class));
+                else {
+                    bar.setVisibility(View.VISIBLE);
+                    mAuth.signInWithEmailAndPassword(Email, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(MainActivity.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(MainActivity.this, HomePage.class));
+                            } else {
+                                Toast.makeText(MainActivity.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                            bar.setVisibility(View.INVISIBLE);
                         }
-                        else{
-                            Toast.makeText(MainActivity.this,"Error"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                    });
+                }
             }
         });
+
+//        signIn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                loginUser(v);
+//            }
+//        });
     }
+
+    private boolean validateEmail(){
+        String Email = email.getText().toString();
+        if(Email.isEmpty()){
+            email.setError("Email is required");
+            return false;
+        }
+        else{
+            email.setError(null);
+            return true;
+        }
+    }
+    private boolean validatePass(){
+        String Password = password.getText().toString();
+        if(Password.isEmpty()){
+            password.setError("Password is required");
+            return false;
+        }
+        else if(Password.length() < 6){
+            password.setError("Password must be of length 6");
+            return false;
+        }
+        else{
+            password.setError(null);
+            return true;
+        }
+    }
+//    public void loginUser(View v){
+//        if(!validateEmail() | !validatePass()){
+//            return;
+//        }
+//        else{
+//            isUser();
+//        }
+//    }
+//
+//    private void isUser(){
+//        String enteredEmail = email.getText().toString();
+//        String enteredPass = password.getText().toString();
+//
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
+//        Query checkUser = ref.orderByChild("mail").equalTo(enteredEmail);
+//        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if(snapshot.exists()){
+////                    email.setError(null);
+//                    String passDB = snapshot.child(enteredEmail).child("password").getValue(String.class);
+//                    try {
+//
+//
+//                        if (enteredPass.equals(passDB)) {
+//                            Intent gotoHome = new Intent(MainActivity.this, HomePage.class);
+//                            bar.setVisibility(View.VISIBLE);
+//                            startActivity(gotoHome);
+//                        } else {
+//                            password.setError("Wrong password");
+//                            password.requestFocus();
+//                            bar.setVisibility(View.INVISIBLE);
+//                        }
+//                    }
+//                    catch (Exception e){
+//                        Toast.makeText(MainActivity.this,"Error",Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//                else{
+//                    email.setError("No such email registered");
+//                    email.requestFocus();
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
 }
