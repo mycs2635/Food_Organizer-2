@@ -23,12 +23,14 @@ public class FragmentAdapter extends FragmentStateAdapter {
                 return new HomeFragment();
             case 2:
                 return new ProfileFragment();
+            case 3:
+                return new DonationFragment();
         }
         return new InventoryFragment();
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 4;
     }
 }
