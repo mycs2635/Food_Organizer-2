@@ -3,12 +3,4 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InventoryFragment">
-
-    <TextView
-        android:id="@+id/Inventory_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Inventory page" />
-</FrameLayout>
+    tools:context=".InventoryFragment"/>
