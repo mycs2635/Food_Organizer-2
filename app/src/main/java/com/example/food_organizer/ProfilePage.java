@@ -66,6 +66,12 @@ public class ProfilePage extends AppCompatActivity {
                             mail.getText().toString(),
                             userName.getText().toString(),
                             password.getText().toString());
+
+//                    Intent verify = new Intent(ProfilePage.this,PhoneNoVerification.class);
+//                    verify.putExtra("phoneNo",phone.getText().toString());
+//                    startActivity(verify);
+
+
                     reference.child(phone.getText().toString()).setValue(newProfile);
                     mAuth.createUserWithEmailAndPassword(mail.getText().toString(),password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -74,6 +80,7 @@ public class ProfilePage extends AppCompatActivity {
                                 Toast.makeText(ProfilePage.this,"User created successfully",Toast.LENGTH_SHORT).show();
                                 Intent gotoHome = new Intent(ProfilePage.this,HomePage.class);
                                 startActivity(gotoHome);
+                                finish();
                             }
                         }
                     });
