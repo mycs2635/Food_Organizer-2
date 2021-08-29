@@ -40,7 +40,7 @@ public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.ViewHo
         holder.textView.setText(imgList.get(position).getImageName());
 
         // to set image
-        Glide.with(imgContext).load(imgList.get(position).getImageUrl()).into(holder.imageView);
+        Glide.with(holder.imageView.getContext()).load(imgList.get(position).getImageUrl()).into(holder.imageView);
     }
 
     @Override
@@ -62,3 +62,4 @@ public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.ViewHo
         }
     }
 }
+

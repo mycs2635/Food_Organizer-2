@@ -76,7 +76,7 @@ public class InventoryFragment extends B {
         FloatingActionButton add = null;
         FloatingActionButton edit;
         FloatingActionButton img;
-           add.startAnimation( AnimationUtils.loadAnimation(InventoryFragment.this,R.anim.rotate_open_anim));
+//           add.startAnimation( AnimationUtils.loadAnimation(InventoryFragment.this,R.anim.rotate_open_anim));
         add=(FloatingActionButton)v.findViewById(R.id.floating_add_button);
         edit=(FloatingActionButton)v.findViewById(R.id.floating_edit_button);
         img=(FloatingActionButton)v.findViewById(R.id.floating_image_button);
