@@ -29,7 +29,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
-    Button signIn;
+    Button signIn,signUp;
     EditText email,password;
     ProgressBar bar;
 
@@ -155,39 +155,39 @@ public class MainActivity extends AppCompatActivity {
 //                        }
 //                    });
 //                }
-                if(Email.equals("1") && Password.equals("1")){
-                    Toast.makeText(MainActivity.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this, HomePage.class));
-                    finish();
-                }
-                else if(!validateEmail() | !validatePass()){
-                    Toast.makeText(MainActivity.this,"check your details",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                else {
-                    bar.setVisibility(View.VISIBLE);
-                    mAuth.signInWithEmailAndPassword(Email, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(MainActivity.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(MainActivity.this, HomePage.class));
-                                finish();
-                            } else {
-                                Toast.makeText(MainActivity.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                            bar.setVisibility(View.INVISIBLE);
-                        }
-                    });
-                }
-            }
-        });
-       signIn.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               loginUser(v);
-           }
-       });
+//                if(Email.equals("1") && Password.equals("1")){
+//                    Toast.makeText(MainActivity.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
+//                    startActivity(new Intent(MainActivity.this, HomePage.class));
+//                    finish();
+//                }
+//                else if(!validateEmail() | !validatePass()){
+//                    Toast.makeText(MainActivity.this,"check your details",Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//                else {
+//                    bar.setVisibility(View.VISIBLE);
+//                    mAuth.signInWithEmailAndPassword(Email, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<AuthResult> task) {
+//                            if (task.isSuccessful()) {
+//                                Toast.makeText(MainActivity.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
+//                                startActivity(new Intent(MainActivity.this, HomePage.class));
+//                                finish();
+//                            } else {
+//                                Toast.makeText(MainActivity.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+//                            }
+//                            bar.setVisibility(View.INVISIBLE);
+//                        }
+//                    });
+//                }
+//            }
+//        });
+//       signIn.setOnClickListener(new View.OnClickListener() {
+//           @Override
+//           public void onClick(View v) {
+//               loginUser(v);
+//           }
+//       });
     }
 
     private boolean validateEmail(){
