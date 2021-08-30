@@ -1,12 +1,20 @@
 package com.example.food_organizer;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +35,14 @@ public class LoginFragmentNew extends Fragment {
     public LoginFragmentNew() {
         // Required empty public constructor
     }
+
+       private FirebaseAuth mAuth;
+    databaseHelper db = new databaseHelper.getContext(LoginFragmentNew.this);
+    EditText email,password;
+    Button signIn;
+    TabLayout tabLayout;
+    ViewPager2 pager2;
+    FragmentAdapterNew adapter;
 
     /**
      * Use this factory method to create a new instance of
@@ -59,6 +75,55 @@ public class LoginFragmentNew extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login_new, container, false);
+
+        View v= inflater.inflate(R.layout.fragment_login_new, container, false);
+        email= v.findViewById(R.id.etMaillogin);
+        password=v.findViewById(R.id.etPasswordlogin);
+        signIn=v.findViewById(R.id.bt_SignInLogin);
+        signIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(db.checkEmail(email.getText().toString())){
+                    if(db.checkPassword(email.getText().toString(),password.getText().toString())) {
+//                        Toast.makeText(LoginFragmentNew.this, "Welcome Back!!!", Toast.LENGTH_SHORT).show();
+//                        Intent gotoHomePage = new Intent(LoginFragmentNew.this,HomePage.class);
+                        startActivity(gotoHomePage);
+                    }
+                    else
+                       Toast.makeText(MainActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                String Email = email.getText().toString().trim();
+                String Password = password.getText().toString().trim();
+                if(TextUtils.isEmpty(Email)){
+                   email.setError("Email is required");return;
+                }
+               if(TextUtils.isEmpty(Password)){password.setError("Password is required");
+                    return;
+                }
+                if(Password.length() < 6){
+                    password.setError("Password must be at least 8 characters long");
+                 return;
+              }
+                if(!validateEmail() | !validatePass()){
+                    Toast.makeText(LoginFragmentNew.this,"check your details",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else {
+                    bar.setVisibility(View.VISIBLE);
+                    mAuth.signInWithEmailAndPassword(Email, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(MainActivity.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(MainActivity.this, HomePage.class));
+                                finish();
+                            } else {
+                                Toast.makeText(MainActivity.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                            bar.setVisibility(View.INVISIBLE);
+                        }
+                    });
+            }
+        });
+        return v;
     }
 }

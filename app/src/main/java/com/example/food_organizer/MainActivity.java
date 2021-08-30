@@ -30,7 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     Button signIn,signUp;
-    EditText email,password;
+
     ProgressBar bar;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -98,8 +98,8 @@ public class MainActivity extends AppCompatActivity {
 
        // signUp = findViewById(R.id.buttonSignUplogin);
         signIn = findViewById(R.id.bt_SignInLogin);
-        email = findViewById(R.id.etMaillogin);
-        password = findViewById(R.id.etPasswordlogin);
+//        email = findViewById(R.id.etMaillogin);
+//        password = findViewById(R.id.etPasswordlogin);
 //        bar = findViewById(R.id.progressBar2);
 //        bar.setVisibility(View.INVISIBLE);
 //        signUp.setOnClickListener(new View.OnClickListener() {
