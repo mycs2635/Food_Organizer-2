@@ -117,6 +117,8 @@ public class LoginFragmentNew extends Fragment {
                 } else {
                         //bar.setVisibility(View.VISIBLE);
                         mAuth.signInWithEmailAndPassword(Email, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
