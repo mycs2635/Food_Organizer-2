@@ -2,31 +2,15 @@ package com.example.food_organizer;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link InventoryFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-class A extends AppCompatActivity{
-
-}
-class B extends Fragment
-{
-
-}
-public class InventoryFragment extends B {
+public class InventoryFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

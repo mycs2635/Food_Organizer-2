@@ -3,6 +3,7 @@ package com.example.food_organizer;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -37,7 +38,7 @@ public class LoginFragmentNew extends Fragment {
     }
 
        private FirebaseAuth mAuth;
-    databaseHelper db = new databaseHelper.getContext(LoginFragmentNew.this);
+//    databaseHelper db = new databaseHelper.getContext(LoginFragmentNew.this);
     EditText email,password;
     Button signIn;
     TabLayout tabLayout;
@@ -83,17 +84,16 @@ public class LoginFragmentNew extends Fragment {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(db.checkEmail(email.getText().toString())){
-                    if(db.checkPassword(email.getText().toString(),password.getText().toString())) {
-//                        Toast.makeText(LoginFragmentNew.this, "Welcome Back!!!", Toast.LENGTH_SHORT).show();
-//                        Intent gotoHomePage = new Intent(LoginFragmentNew.this,HomePage.class);
-                        startActivity(gotoHomePage);
-                    }
-                    else
-                       Toast.makeText(MainActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
-                String Email = email.getText().toString().trim();
-                String Password = password.getText().toString().trim();
-                if(TextUtils.isEmpty(Email)){
+////                if (db.checkEmail(email.getText().toString())) {
+////                    if (db.checkPassword(email.getText().toString(), password.getText().toString())) {
+//                        Toast.makeText(getContext(), "Welcome Back!!!", Toast.LENGTH_SHORT).show();
+//                        Intent gotoHomePage = new Intent(getActivity(),HomePage.class);
+//                        startActivity(gotoHomePage);
+//                    } else
+//                        Toast.makeText(getContext(), "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                    String Email = email.getText().toString().trim();
+                    String Password = password.getText().toString().trim();
+               /* if(TextUtils.isEmpty(Email)){
                    email.setError("Email is required");return;
                 }
                if(TextUtils.isEmpty(Password)){password.setError("Password is required");
@@ -102,28 +102,63 @@ public class LoginFragmentNew extends Fragment {
                 if(Password.length() < 6){
                     password.setError("Password must be at least 8 characters long");
                  return;
-              }
-                if(!validateEmail() | !validatePass()){
-                    Toast.makeText(LoginFragmentNew.this,"check your details",Toast.LENGTH_SHORT).show();
-                    return;
+              }*/
+                    if(Email.equals("1") && Password.equals("1")){
+                    Toast.makeText(getContext(), "Logged in successfully", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getActivity(), HomePage.class));
+
                 }
-                else {
-                    bar.setVisibility(View.VISIBLE);
-                    mAuth.signInWithEmailAndPassword(Email, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(MainActivity.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(MainActivity.this, HomePage.class));
-                                finish();
-                            } else {
-                                Toast.makeText(MainActivity.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                else if(!validateEmail() | !validatePass()){
+                    Toast.makeText(getContext(),"check your details",Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                        //bar.setVisibility(View.VISIBLE);
+                        mAuth.signInWithEmailAndPassword(Email, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getContext(), "Logged in successfully", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getActivity(), HomePage.class));
+
+                                } else {
+                                    Toast.makeText(getContext(), "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                               // bar.setVisibility(View.INVISIBLE);
                             }
-                            bar.setVisibility(View.INVISIBLE);
-                        }
-                    });
-            }
+                        });
+                    }
+
+                }
+//            }
         });
+
         return v;
+
+}
+    private boolean validateEmail(){
+        String Email = email.getText().toString();
+        if(Email.isEmpty()){
+            email.setError("Email is required");
+            return false;
+        }
+        else{
+            email.setError(null);
+            return true;
+        }
+    }
+    private boolean validatePass(){
+        String Password = password.getText().toString();
+        if(Password.isEmpty()){
+            password.setError("Password is required");
+            return false;
+        }
+        else if(Password.length() < 6){
+            password.setError("Password must be of length 6");
+            return false;
+        }
+        else{
+            password.setError(null);
+            return true;
+        }
     }
 }

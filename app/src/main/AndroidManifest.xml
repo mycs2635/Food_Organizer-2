@@ -15,9 +15,6 @@
             android:name=".userProfile"
             android:exported="true" />
         <activity
-            android:name=".inventoryPage"
-            android:exported="true" />
-        <activity
             android:name=".createProductPage"
             android:exported="true" />
         <activity android:name=".HomePage" />
