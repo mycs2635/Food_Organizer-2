@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Food_Organizer">
         <activity
+            android:name=".Collect"
+            android:exported="true" />
+        <activity
+            android:name=".Donation"
+            android:exported="true" />
+        <activity
             android:name=".userProfile"
             android:exported="true" />
         <activity
