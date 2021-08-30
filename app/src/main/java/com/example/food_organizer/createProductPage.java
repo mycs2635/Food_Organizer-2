@@ -36,7 +36,7 @@ public class createProductPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                Products p=new Products(prdtName.getText().toString(),)
+
 
 
 
