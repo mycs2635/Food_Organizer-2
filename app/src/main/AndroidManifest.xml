@@ -24,7 +24,8 @@
             android:name=".createProductPage"
             android:exported="true" />
         <activity android:name=".HomePage" />
-        <activity android:name=".ProfilePage" />
+        <activity android:name=".ProfilePage"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
