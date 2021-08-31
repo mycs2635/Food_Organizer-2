@@ -14,8 +14,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,6 +75,8 @@ public class LoginFragmentNew extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
@@ -81,6 +88,13 @@ public class LoginFragmentNew extends Fragment {
         email= v.findViewById(R.id.etMaillogin);
         password=v.findViewById(R.id.etPasswordlogin);
         signIn=v.findViewById(R.id.bt_SignInLogin);
+        mAuth = FirebaseAuth.getInstance();
+
+//        if(mAuth.getCurrentUser() != null){
+//            Intent gotoHome = new Intent(getActivity(),HomePage.class);
+//            startActivity(gotoHome);
+//            getActivity().finish();
+//        }
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,7 +117,7 @@ public class LoginFragmentNew extends Fragment {
                     password.setError("Password must be at least 8 characters long");
                  return;
               }*/
-                    if(Email.equals("1") && Password.equals("1")){
+                if(Email.equals("1") && Password.equals("1")){
                     Toast.makeText(getContext(), "Logged in successfully", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getActivity(), HomePage.class));
 
@@ -118,7 +132,9 @@ public class LoginFragmentNew extends Fragment {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(getContext(), "Logged in successfully", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(getActivity(), HomePage.class));
+                                    Intent gotoHome = new Intent(getActivity(), HomePage.class);
+                                    gotoHome.putExtra("UserName",mAuth.getCurrentUser().getDisplayName());
+                                    startActivity(gotoHome);
 
                                 } else {
                                     Toast.makeText(getContext(), "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

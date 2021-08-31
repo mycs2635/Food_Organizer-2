@@ -190,32 +190,32 @@ public class MainActivity extends AppCompatActivity {
 //       });
     }
 
-    private boolean validateEmail(){
-        String Email = email.getText().toString();
-        if(Email.isEmpty()){
-            email.setError("Email is required");
-            return false;
-        }
-        else{
-            email.setError(null);
-            return true;
-        }
-    }
-    private boolean validatePass(){
-        String Password = password.getText().toString();
-        if(Password.isEmpty()){
-            password.setError("Password is required");
-            return false;
-        }
-        else if(Password.length() < 6){
-            password.setError("Password must be of length 6");
-            return false;
-        }
-        else{
-            password.setError(null);
-            return true;
-        }
-    }
+//    private boolean validateEmail(){
+//        String Email = email.getText().toString();
+//        if(Email.isEmpty()){
+//            email.setError("Email is required");
+//            return false;
+//        }
+//        else{
+//            email.setError(null);
+//            return true;
+//        }
+//    }
+//    private boolean validatePass(){
+//        String Password = password.getText().toString();
+//        if(Password.isEmpty()){
+//            password.setError("Password is required");
+//            return false;
+//        }
+//        else if(Password.length() < 6){
+//            password.setError("Password must be of length 6");
+//            return false;
+//        }
+//        else{
+//            password.setError(null);
+//            return true;
+//        }
+//    }
 //    public void loginUser(View v){
 //        if(!validateEmail() | !validatePass()){
 //            return;
