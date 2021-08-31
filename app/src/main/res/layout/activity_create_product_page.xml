@@ -8,7 +8,7 @@
 
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/et_name_crtprt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -36,39 +36,29 @@
         app:layout_constraintVertical_bias="0.382" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_bg"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.86"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.852" />
-
-    <Button
-        android:id="@+id/button3"
+        android:id="@+id/bt_addprt_Crtprt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button_bg"
         android:backgroundTint="@android:color/holo_green_light"
-        android:text="Button"
+        android:text="Add Product"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.132"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.853" />
+        app:layout_constraintVertical_bias="0.738" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/img_upld_crtprt"
         android:layout_width="202dp"
         android:layout_height="170dp"
-        app:srcCompat="@drawable/ic_baseline_add_a_photo_24"
-        tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="26dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.417"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023"
+        app:srcCompat="@drawable/ic_baseline_add_a_photo_24" />
 
     <TextView
         android:id="@+id/textView6"
@@ -87,6 +77,7 @@
         app:layout_constraintVertical_bias="0.247" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtL_crtprdt"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="263dp"
         android:layout_height="66dp"
@@ -98,7 +89,7 @@
         app:layout_constraintVertical_bias="0.476">
 
         <AutoCompleteTextView
-            android:id="@+id/autoCompleteTextView3"
+            android:id="@+id/act_prt_Crtprt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
