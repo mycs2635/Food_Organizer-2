@@ -20,6 +20,24 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         Intent intent = getIntent();
+
+        String Name = intent.getStringExtra("Name");
+        String Gender = intent.getStringExtra("Gender");
+        String UserName = intent.getStringExtra("UserName");
+        String Phone = intent.getStringExtra("Phone");
+        String Email = intent.getStringExtra("Email");
+
+        ProfileFragment pf=new ProfileFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("Name",Name);
+        bundle.putString("Gender",Gender);
+        bundle.putString("UserName",UserName);
+        bundle.putString("Phone",Phone);
+        bundle.putString("Email",Email);
+        pf.setArguments(bundle);
+
+
+
         tabLayout=findViewById(R.id.tablayout);
         viewpage=findViewById(R.id.viewpager2);
         FragmentManager fm=getSupportFragmentManager();
