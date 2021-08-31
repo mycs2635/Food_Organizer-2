@@ -26,6 +26,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link LoginFragmentNew#newInstance} factory method to
@@ -83,6 +85,8 @@ public class LoginFragmentNew extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
@@ -99,6 +103,12 @@ public class LoginFragmentNew extends Fragment {
         password=v.findViewById(R.id.etPasswordlogin);
         signIn=v.findViewById(R.id.bt_SignInLogin);
         mAuth = FirebaseAuth.getInstance();
+
+//        if(mAuth.getCurrentUser() != null){
+//            Intent gotoHome = new Intent(getActivity(),HomePage.class);
+//            startActivity(gotoHome);
+//            getActivity().finish();
+//        }
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,7 +118,17 @@ public class LoginFragmentNew extends Fragment {
                 String Phone = "";
                 String Gender="";
                 String Email = email.getText().toString().trim();
-                    String Password = password.getText().toString().trim();
+                String Password = password.getText().toString().trim();
+               /* if(TextUtils.isEmpty(Email)){
+                   email.setError("Email is required");return;
+                }
+               if(TextUtils.isEmpty(Password)){password.setError("Password is required");
+                    return;
+                }
+                if(Password.length() < 6){
+                    password.setError("Password must be at least 8 characters long");
+                 return;
+              }*/
 
                 if(Email.equals("1") && Password.equals("1")){
                     Toast.makeText(getContext(), "Logged in successfully", Toast.LENGTH_SHORT).show();
