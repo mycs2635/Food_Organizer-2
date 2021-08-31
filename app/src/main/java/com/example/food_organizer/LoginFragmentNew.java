@@ -95,6 +95,17 @@ public class LoginFragmentNew extends Fragment {
 
         ref= FirebaseDatabase.getInstance().getReference();
 
+        mAuth=FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser()!=null){
+            Intent intent = new Intent(getActivity(),HomePage.class);
+//            intent.putExtra("Email",Email);
+//            //  intent.putExtra("Password",Email);
+//            intent.putExtra("Name",user.getName());
+//            intent.putExtra("Gender", user.getGender());
+//            intent.putExtra("Phone",user.getPhone());
+//            intent.putExtra("UserName",user.getUserName());
+            startActivity(intent);
+        }
 
         // Inflate the layout for this fragment
 

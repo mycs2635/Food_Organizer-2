@@ -22,14 +22,15 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:clickable="true"
             android:text="Logout"
             android:textColor="@color/black"
-            android:textStyle="normal"
             android:textSize="15dp"
-            />
+            android:textStyle="normal" />
     </LinearLayout>
 
     <View

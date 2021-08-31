@@ -1,6 +1,7 @@
 package com.example.food_organizer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,8 @@ public class HomeFragment extends Fragment {
     RecyclerView recyclerView;
 
     private DatabaseReference ref;
+
+    Button add;
 
     private ArrayList<Images> imageList;
     private RecyclerAdaptor recyclerAdaptor;
@@ -91,7 +94,7 @@ public class HomeFragment extends Fragment {
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                clearAll();
+             //   clearAll();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Images images = new Images();
                     images.setImageUrl(dataSnapshot.child("imageUrl").getValue().toString());
@@ -131,6 +134,8 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+
+
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recView);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
@@ -142,6 +147,14 @@ public class HomeFragment extends Fragment {
 
         // get data from firebase database
         getDataFromFirebase();
+
+        add=view.findViewById(R.id.buttonAdd);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(),CreateProductPage.class));
+            }
+        });
         return view;
     }
 }

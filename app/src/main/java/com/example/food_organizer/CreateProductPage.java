@@ -2,6 +2,7 @@ package com.example.food_organizer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,14 +13,14 @@ import android.widget.TextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class createProductPage extends AppCompatActivity {
+public class CreateProductPage extends AppCompatActivity {
 
     private ImageView imgCrtPrdt;
     private EditText prdtName;
     //expirydate rayali;
     private Button addprdt;
     DatabaseReference ref;
-
+    Intent intent = getIntent();
 
 
 
@@ -38,7 +39,6 @@ public class createProductPage extends AppCompatActivity {
 
 //               Products p=new Products(prdtName.getText().toString(),)
 
-//rei nik siggu led raa mundaaa yethin
 
             }
         });

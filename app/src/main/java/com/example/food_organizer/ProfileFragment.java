@@ -12,6 +12,10 @@ import android.widget.Button;
 
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
+import org.w3c.dom.Text;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ProfileFragment#newInstance} factory method to
@@ -19,7 +23,7 @@ import android.widget.TextView;
  */
 public class ProfileFragment extends Fragment {
 
-    private Button signOut;
+    private TextView logout;
     TextView name,username,phone,gender,mail;
     Button edit,change_pass;
     // TODO: Rename parameter arguments, choose names that match
@@ -73,6 +77,17 @@ public class ProfileFragment extends Fragment {
         gender=v.findViewById(R.id.profile_gender);
         username=v.findViewById(R.id.profile_username);
         phone=v.findViewById(R.id.profile_phone);
+
+        logout=v.findViewById(R.id.logout);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getContext(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         Bundle bundle = getArguments();
         //bundle = getArguments();
