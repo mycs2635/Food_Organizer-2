@@ -191,11 +191,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 //    private boolean validateEmail(){
-<<<<<<< HEAD
+//<<<<<<< HEAD
 //        String Email = email.getText().toString();
-=======
+//=======
 ////        String Email = email.getText().toString();
->>>>>>> d5c1365075d1f3fb62a9448be8555c748fffc73b
+//>>>>>>> d5c1365075d1f3fb62a9448be8555c748fffc73b
 //        if(Email.isEmpty()){
 //            email.setError("Email is required");
 //            return false;
