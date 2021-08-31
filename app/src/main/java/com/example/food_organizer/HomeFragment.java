@@ -7,10 +7,11 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -24,7 +25,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -109,7 +109,24 @@ public class HomeFragment extends Fragment {
                 }catch (Exception e){
                     Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
                 }
+                recyclerView.addOnItemTouchListener(new RcyclrTouchListnr(getContext(),recyclerView,new Clicklstnr(){
+
+
+                    @Override
+                    public void onClick(View view, int pos) {
+
+                    }
+
+                    @Override
+                    public void onLongClick(View view, int pos) {
+
+                    }
+                }));
+
             }
+
+
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -157,4 +174,60 @@ public class HomeFragment extends Fragment {
         });
         return view;
     }
+    public static interface Clicklstnr{
+        public void onClick(View view,int pos);
+        public void onLongClick(View view,int pos);
+
+    }
+
+    class RcyclrTouchListnr implements RecyclerView.OnItemTouchListener {
+        private Clicklstnr clicklistener;
+        private GestureDetector gestureDetector;
+
+        public RcyclrTouchListnr(Context context, RecyclerView recyclerView, Clicklstnr clicklstnr) {
+
+        }
+
+        public void RecyclerTouchListener(Context context, final RecyclerView recycleView, final Clicklstnr clicklistener){
+
+            this.clicklistener=clicklistener;
+            gestureDetector=new GestureDetector(context,new GestureDetector.SimpleOnGestureListener(){
+                @Override
+                public boolean onSingleTapUp(MotionEvent e) {
+                    return true;
+                }
+
+                @Override
+                public void onLongPress(MotionEvent e) {
+                    View child=recycleView.findChildViewUnder(e.getX(),e.getY());
+                    if(child!=null && clicklistener!=null){
+                        clicklistener.onLongClick(child,recycleView.getChildAdapterPosition(child));
+                    }
+                }
+            });
+        }
+
+
+        @Override
+        public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+            View child=rv.findChildViewUnder(e.getX(),e.getY());
+            if(child!=null && clicklistener!=null && gestureDetector.onTouchEvent(e)){
+                clicklistener.onClick(child,rv.getChildAdapterPosition(child));
+            }
+
+            return false;
+        }
+
+        @Override
+        public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+
+        }
+
+        @Override
+        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+        }
+    }
+
+
 }

@@ -1,6 +1,7 @@
 package com.example.food_organizer;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.ViewHo
     private static final String tag = "Recycler View";
     private Context imgContext;
     private ArrayList<Images> imgList;
+
 
     public RecyclerAdaptor(Context imgContext, ArrayList<Images> imgList) {
         this.imgContext = imgContext;
