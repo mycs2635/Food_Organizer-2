@@ -19,6 +19,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
@@ -29,10 +35,14 @@ import java.util.Objects;
  */
 public class LoginFragmentNew extends Fragment {
 
+
+    DatabaseReference ref;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -82,6 +92,10 @@ public class LoginFragmentNew extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        ref= FirebaseDatabase.getInstance().getReference();
+
+
         // Inflate the layout for this fragment
 
         View v= inflater.inflate(R.layout.fragment_login_new, container, false);
@@ -98,15 +112,13 @@ public class LoginFragmentNew extends Fragment {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-////                if (db.checkEmail(email.getText().toString())) {
-////                    if (db.checkPassword(email.getText().toString(), password.getText().toString())) {
-//                        Toast.makeText(getContext(), "Welcome Back!!!", Toast.LENGTH_SHORT).show();
-//                        Intent gotoHomePage = new Intent(getActivity(),HomePage.class);
-//                        startActivity(gotoHomePage);
-//                    } else
-//                        Toast.makeText(getContext(), "Invalid Credentials", Toast.LENGTH_SHORT).show();
-                    String Email = email.getText().toString().trim();
-                    String Password = password.getText().toString().trim();
+////
+                String Name="";
+                String UserName="";
+                String Phone = "";
+                String Gender="";
+                String Email = email.getText().toString().trim();
+                String Password = password.getText().toString().trim();
                /* if(TextUtils.isEmpty(Email)){
                    email.setError("Email is required");return;
                 }
@@ -117,24 +129,58 @@ public class LoginFragmentNew extends Fragment {
                     password.setError("Password must be at least 8 characters long");
                  return;
               }*/
+
                 if(Email.equals("1") && Password.equals("1")){
                     Toast.makeText(getContext(), "Logged in successfully", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getActivity(), HomePage.class));
-
                 }
                 else if(!validateEmail() | !validatePass()){
                     Toast.makeText(getContext(),"check your details",Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                         //bar.setVisibility(View.VISIBLE);
+                        Query query = ref.child("users");
+                        Customer user = new Customer();
+                        query.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+//                                    user.setImageUrl(dataSnapshot.child("imageUrl").getValue().toString());
+//                                    images.setImageName(dataSnapshot.child("imageName").getValue().toString());
+//
+
+                                    if(dataSnapshot.child("mail").getValue().toString().equals(Email)){
+                                        user.setUserName(dataSnapshot.child("userName").getValue().toString());
+                                      user.setPhone(dataSnapshot.child("phone").getValue().toString());
+                                      user.setName(dataSnapshot.child("name").getValue().toString());
+                                      user.setGender(dataSnapshot.child("gender").getValue().toString());
+                                      user.setMail(dataSnapshot.child("mail").getValue().toString());
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
                         mAuth.signInWithEmailAndPassword(Email, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+
                                 if (task.isSuccessful()) {
                                     Toast.makeText(getContext(), "Logged in successfully", Toast.LENGTH_SHORT).show();
-                                    Intent gotoHome = new Intent(getActivity(), HomePage.class);
-                                    gotoHome.putExtra("UserName",mAuth.getCurrentUser().getDisplayName());
-                                    startActivity(gotoHome);
+                                    Intent intent = new Intent(getActivity(),HomePage.class);
+                                    intent.putExtra("Email",Email);
+                                  //  intent.putExtra("Password",Email);
+                                    intent.putExtra("Name",user.getName());
+                                    intent.putExtra("Gender", user.getGender());
+                                    intent.putExtra("Phone",user.getPhone());
+                                    intent.putExtra("UserName",user.getUserName());
+                                    startActivity(intent);
 
                                 } else {
                                     Toast.makeText(getContext(), "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -143,10 +189,8 @@ public class LoginFragmentNew extends Fragment {
                             }
                         });
                     }
-
-                }
-//            }
-        });
+           }
+       });
 
         return v;
 

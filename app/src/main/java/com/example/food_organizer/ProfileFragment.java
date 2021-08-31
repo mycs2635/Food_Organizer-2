@@ -9,9 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +20,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ProfileFragment extends Fragment {
 
     private Button signOut;
+    TextView name,username,phone,gender,mail;
+    Button edit,change_pass;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -65,16 +66,23 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_profile, container, false);
-//        signOut = v.findViewById(R.id.bt_SignOut);
-//        signOut.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FirebaseAuth.getInstance().signOut();
-//                Toast.makeText(getContext(),"Logging out",Toast.LENGTH_SHORT).show();
-//                startActivity(new Intent(getActivity(),MainActivity.class));
-//            }
-//        });
+
+        View v =  inflater.inflate(R.layout.fragment_profile, container, false);
+        name=v.findViewById(R.id.profile_name);
+        mail=v.findViewById(R.id.profile_email);
+        gender=v.findViewById(R.id.profile_gender);
+        username=v.findViewById(R.id.profile_username);
+        phone=v.findViewById(R.id.profile_phone);
+
+        Bundle bundle = getArguments();
+        //bundle = getArguments();
+        if(bundle!=null){
+            name.setText(bundle.getString("Name"));
+            username.setText(bundle.getString("UserName"));
+            phone.setText(bundle.getString("Phone"));
+            gender.setText(bundle.getString("Gender"));
+            mail.setText(bundle.getString("Email"));
+        }
         return v;
 
     }
