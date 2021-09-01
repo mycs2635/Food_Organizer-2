@@ -22,7 +22,7 @@ donation
 inventory
 
  home fragment
-    It will give suggestions to the users(under pk's surveliance)
+    It will give suggestions to the users
     
   Profile Fragment
     It displays the information about the use
