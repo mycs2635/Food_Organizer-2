@@ -20,12 +20,12 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         Intent intent = getIntent();
-
+        String Email = intent.getStringExtra("Email");
         String Name = intent.getStringExtra("Name");
         String Gender = intent.getStringExtra("Gender");
         String UserName = intent.getStringExtra("UserName");
         String Phone = intent.getStringExtra("Phone");
-        String Email = intent.getStringExtra("Email");
+
 
         ProfileFragment pf=new ProfileFragment();
         Bundle bundle = new Bundle();
@@ -35,6 +35,7 @@ public class HomePage extends AppCompatActivity {
         bundle.putString("Phone",Phone);
         bundle.putString("Email",Email);
         pf.setArguments(bundle);
+
 
 
 

@@ -23,6 +23,10 @@
     <string name="otp">OTP</string>
     <string name="verify">Verify</string>
     <string name="add">Add</string>
-
+  <array name="names">
+      <item>Onion</item>
+      <item>Banana</item>
+      <item>Apple</item>
+  </array>
 
 </resources>
