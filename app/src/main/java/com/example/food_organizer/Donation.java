@@ -41,11 +41,35 @@ DatabaseReference ref;
     }
 }
 class Donationdetails{
-    String address;
-    String des;
-    String phone;
+    private String address;
+    private String des;
+    private String phone;
 
-    public Donationdetails(String address,String des,String phone) {
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getDes() {
+        return des;
+    }
+
+    public void setDes(String des) {
+        this.des = des;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Donationdetails(String address, String des, String phone) {
         this.address = address;
         this.des=des;
         this.phone=phone;
