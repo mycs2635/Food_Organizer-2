@@ -167,6 +167,7 @@ public class LoginFragmentNew extends Fragment {
                                       user.setName(dataSnapshot.child("name").getValue().toString());
                                       user.setGender(dataSnapshot.child("gender").getValue().toString());
                                       user.setMail(dataSnapshot.child("mail").getValue().toString());
+                                      break;
                                     }
                                 }
                             }
@@ -185,22 +186,22 @@ public class LoginFragmentNew extends Fragment {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(getContext(), "Logged in successfully", Toast.LENGTH_SHORT).show();
                                   //  Intent intent = new Intent(getActivity(),HomePage.class);
-                                    Intent intent = new Intent(getActivity(),ProfileFragment.class);
+                                    Intent intent = new Intent(getActivity(),HomePage.class);
                                     intent.putExtra("Email",Email.toString());
                                   //  intent.putExtra("Password",Email);
                                     intent.putExtra("Name",user.getName().toString());
                                     intent.putExtra("Gender", user.getGender().toString());
                                     intent.putExtra("Phone",user.getPhone().toString());
                                     intent.putExtra("UserName",user.getUserName().toString());
-                                    ProfileFragment pf=new ProfileFragment();
-                                    Bundle bundle = new Bundle();
-                                    bundle.putString("Name",Name);
-                                    bundle.putString("Gender",Gender);
-                                    bundle.putString("UserName",UserName);
-                                    bundle.putString("Phone",Phone);
-                                    bundle.putString("Email",Email);
-                                    pf.setArguments(bundle);
-                                    getFragmentManager().beginTransaction().replace(R.id.viewpager2,pf).commit();
+//                                    ProfileFragment pf=new ProfileFragment();
+//                                    Bundle bundle = new Bundle();
+//                                    bundle.putString("Name",Name);
+//                                    bundle.putString("Gender",Gender);
+//                                    bundle.putString("UserName",UserName);
+//                                    bundle.putString("Phone",Phone);
+//                                    bundle.putString("Email",Email);
+//                                    pf.setArguments(bundle);
+//                                    getFragmentManager().beginTransaction().replace(R.id.viewpager2,pf).commit();
                                     startActivity(intent);
 
 
