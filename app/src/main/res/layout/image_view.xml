@@ -9,16 +9,6 @@
     android:layout_marginLeft="10dp"
     app:cardUseCompatPadding="true">
 
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:foreground="?android:attr/selectableItemBackground"-->
-<!--        android:elevation="5dp"-->
-<!--        cor-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
-
     <RelativeLayout
         android:layout_width="175dp"
         android:layout_height="275dp"
