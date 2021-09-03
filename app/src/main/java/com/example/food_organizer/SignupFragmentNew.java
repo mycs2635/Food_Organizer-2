@@ -84,15 +84,27 @@ public class SignupFragmentNew extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_signup_new, container, false);
+
         crtProfile = v.findViewById(R.id.bt_createprofile);
+<<<<<<< HEAD
+
+        name=v.findViewById(R.id.etNamePrfl);
+        gender=v.findViewById(R.id.etGenderPrfl);
+        phone=v.findViewById(R.id.etPhonePrfl);
+        mail=v.findViewById(R.id.etMailPrfl);
+        userName=v.findViewById(R.id.etSetUsernamePrfl);
+        password=v.findViewById(R.id.etSetPassPrfl);
+        cPassword=v.findViewById(R.id.etConfrmPassPrfl);
+        tick=v.findViewById(R.id.checkBoxPrfl);
+=======
         Spinner spin1=(Spinner) v.findViewById(R.id.spin_gender);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.names));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin1.setAdapter(adapter);
+>>>>>>> 4b9b3309f23e412d205c7a94ae53e8ccb02d240d
         crtProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databaseHelper obj=new databaseHelper(getContext());
                 if(checkAllTextFields()){
 
                     rootNode = FirebaseDatabase.getInstance();
@@ -103,11 +115,6 @@ public class SignupFragmentNew extends Fragment {
                             mail.getText().toString(),
                             userName.getText().toString(),
                             password.getText().toString());
-
-//                    Intent verify = new Intent(ProfilePage.this,PhoneNoVerification.class);
-//                    verify.putExtra("phoneNo",phone.getText().toString());
-//                    startActivity(verify);
-
 
                     reference.child(phone.getText().toString()).setValue(newProfile);
                     mAuth.createUserWithEmailAndPassword(mail.getText().toString(),password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -123,9 +130,8 @@ public class SignupFragmentNew extends Fragment {
                     });
                     // Toast.makeText(ProfilePage.this, newProfile.toString(), Toast.LENGTH_SHORT).show();
 
-                    obj.addUser(newProfile);
+//                    obj.addUser(newProfile);
                     Toast.makeText(getContext(),"creating profile", Toast.LENGTH_SHORT).show();
-
                 }
             }
         });
@@ -171,10 +177,10 @@ public class SignupFragmentNew extends Fragment {
             return false;
         }
 
-//        if(!tick.isActivated()){
-//            tick.setError("This field is required");
-//            return false;
-//        }
+        if(!tick.isActivated()){
+            tick.setError("This field is required");
+            return false;
+        }
 
         return true;
     }

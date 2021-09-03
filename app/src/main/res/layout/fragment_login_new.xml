@@ -67,14 +67,19 @@
         app:layout_constraintVertical_bias="0.806" />
 
     <TextView
+        android:id="@+id/tv_forgot_pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forget Password"
+        android:text="Forget Password ?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/etPasswordlogin"
-        app:layout_constraintHorizontal_bias="0.996"
-        app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
 
+        app:layout_constraintHorizontal_bias="0.964"
+=======
+        app:layout_constraintHorizontal_bias="0.996"
+>>>>>>> 4b9b3309f23e412d205c7a94ae53e8ccb02d240d
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPasswordlogin"
         app:layout_constraintVertical_bias="0.061" />
 </androidx.constraintlayout.widget.ConstraintLayout>

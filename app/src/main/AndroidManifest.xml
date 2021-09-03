@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Food_Organizer">
+        <activity android:name=".ResetPassword"></activity>
         <activity
             android:name=".Collect"
             android:exported="true" />
@@ -24,8 +25,9 @@
             android:name=".CreateProductPage"
             android:exported="true" />
         <activity android:name=".HomePage" />
-        <activity android:name=".ProfilePage"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity
+            android:name=".ProfilePage"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

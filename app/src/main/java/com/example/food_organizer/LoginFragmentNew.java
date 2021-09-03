@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -94,6 +95,7 @@ public class LoginFragmentNew extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        TextView forgetPass;
         ref= FirebaseDatabase.getInstance().getReference();
 
         mAuth=FirebaseAuth.getInstance();
@@ -115,12 +117,21 @@ public class LoginFragmentNew extends Fragment {
         password=v.findViewById(R.id.etPasswordlogin);
         signIn=v.findViewById(R.id.bt_SignInLogin);
         mAuth = FirebaseAuth.getInstance();
-
+        forgetPass = v.findViewById(R.id.tv_forgot_pass);
 //        if(mAuth.getCurrentUser() != null){
 //            Intent gotoHome = new Intent(getActivity(),HomePage.class);
 //            startActivity(gotoHome);
 //            getActivity().finish();
 //        }
+
+
+        forgetPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),ResetPassword.class);
+                startActivity(intent);
+            }
+        });
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -206,7 +217,7 @@ public class LoginFragmentNew extends Fragment {
 //                                    pf.setArguments(bundle);
 //                                    getFragmentManager().beginTransaction().replace(R.id.viewpager2,pf).commit();
                                     startActivity(intent);
-
+                                    getActivity().finish();
 
                                 } else {
                                     Toast.makeText(getContext(), "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
