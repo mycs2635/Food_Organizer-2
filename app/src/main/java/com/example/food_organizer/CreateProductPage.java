@@ -22,7 +22,7 @@ public class CreateProductPage extends AppCompatActivity {
     //expirydate rayali;
     private Button addprdt;
     DatabaseReference ref;
-    Intent intent = getIntent();
+
 
 
 
@@ -30,6 +30,7 @@ public class CreateProductPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_product_page);
+        Intent intent = getIntent();
         imgCrtPrdt =findViewById(R.id.img_upld_crtprt);
         prdtName =findViewById(R.id.et_name_crtprt);
         addprdt =findViewById(R.id.bt_addprt_Crtprt);
