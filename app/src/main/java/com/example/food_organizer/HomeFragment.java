@@ -168,8 +168,9 @@ public class HomeFragment extends Fragment {
         add=view.findViewById(R.id.buttonAdd);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getContext(),CreateProductPage.class));
+            public void onClick(View v) {
+                Intent intent= new Intent(getContext(),CreateProductPage.class);
+                startActivity(intent);
             }
         });
         return view;
