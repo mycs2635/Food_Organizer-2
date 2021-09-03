@@ -9,9 +9,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -83,7 +85,10 @@ public class SignupFragmentNew extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_signup_new, container, false);
         crtProfile = v.findViewById(R.id.bt_createprofile);
-
+        Spinner spin1=(Spinner) v.findViewById(R.id.spin_gender);
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.names));
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin1.setAdapter(adapter);
         crtProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
