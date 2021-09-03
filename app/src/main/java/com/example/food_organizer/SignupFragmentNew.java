@@ -9,9 +9,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -84,6 +86,7 @@ public class SignupFragmentNew extends Fragment {
         View v = inflater.inflate(R.layout.fragment_signup_new, container, false);
 
         crtProfile = v.findViewById(R.id.bt_createprofile);
+<<<<<<< HEAD
 
         name=v.findViewById(R.id.etNamePrfl);
         gender=v.findViewById(R.id.etGenderPrfl);
@@ -93,6 +96,12 @@ public class SignupFragmentNew extends Fragment {
         password=v.findViewById(R.id.etSetPassPrfl);
         cPassword=v.findViewById(R.id.etConfrmPassPrfl);
         tick=v.findViewById(R.id.checkBoxPrfl);
+=======
+        Spinner spin1=(Spinner) v.findViewById(R.id.spin_gender);
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.names));
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin1.setAdapter(adapter);
+>>>>>>> 4b9b3309f23e412d205c7a94ae53e8ccb02d240d
         crtProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
