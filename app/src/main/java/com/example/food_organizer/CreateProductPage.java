@@ -14,6 +14,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -24,10 +25,8 @@ public class CreateProductPage extends AppCompatActivity {
 
     private ImageView imgCrtPrdt;
     private EditText prdtName;
-    //expirydate rayali;
     private Button addprdt;
     private TextView tvDate;
-    private EditText etDate;
     DatePickerDialog.OnDateSetListener setListener;
 
     DatabaseReference ref;
@@ -44,8 +43,6 @@ public class CreateProductPage extends AppCompatActivity {
         setContentView(R.layout.activity_create_product_page);
 
         tvDate=findViewById(R.id.tv_date);
-//        etDate=findViewById(R.id.et_Date);
-
         Calendar calendar=Calendar.getInstance();
 
         final int year=calendar.get(Calendar.YEAR);
