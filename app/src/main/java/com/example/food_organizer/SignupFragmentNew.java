@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,6 +35,7 @@ public class SignupFragmentNew extends Fragment {
     private Button crtProfile;
     EditText name,gender,phone,mail,userName,password,cPassword;
     CheckBox tick;
+    Spinner spin1;
 
     FirebaseAuth mAuth;
 
@@ -88,7 +90,7 @@ public class SignupFragmentNew extends Fragment {
         crtProfile = v.findViewById(R.id.bt_createprofile);
 
         name=v.findViewById(R.id.etNamePrfl);
-        gender=v.findViewById(R.id.etGenderPrfl);
+//        gender=v.findViewById(R.id.etGenderPrfl);
         phone=v.findViewById(R.id.etPhonePrfl);
         mail=v.findViewById(R.id.etMailPrfl);
         userName=v.findViewById(R.id.etSetUsernamePrfl);
@@ -97,7 +99,8 @@ public class SignupFragmentNew extends Fragment {
         tick=v.findViewById(R.id.checkBoxPrfl);
         mAuth=FirebaseAuth.getInstance();
 
-        Spinner spin1=(Spinner) v.findViewById(R.id.spin_gender);
+        spin1=(Spinner) v.findViewById(R.id.spin_gender);
+
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.names));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin1.setAdapter(adapter);
@@ -106,10 +109,11 @@ public class SignupFragmentNew extends Fragment {
             public void onClick(View v) {
                 if(checkAllTextFields()){
 
+                    String gender = spin1.getSelectedItem().toString();
                     rootNode = FirebaseDatabase.getInstance();
                     reference = rootNode.getReference("users");
                     Customer newProfile=new Customer(name.getText().toString(),
-                            gender.getText().toString(),
+                            gender,
                             phone.getText().toString(),
                             mail.getText().toString(),
                             userName.getText().toString(),
@@ -147,6 +151,13 @@ public class SignupFragmentNew extends Fragment {
 //            gender.setError("This field is required");
 //            return false;
 //        }
+        if(spin1 == null || spin1.getSelectedItem() == null){
+//            assert spin1 != null;
+//            TextView gen = (TextView) spin1.getSelectedView();
+//            gen.setError("This field is required !!");
+            Toast.makeText(getContext(),"Select gender ",Toast.LENGTH_SHORT).show();
+            return false;
+        }
         if(phone.length() == 0){
             phone.setError("This field is required");
             return false;
