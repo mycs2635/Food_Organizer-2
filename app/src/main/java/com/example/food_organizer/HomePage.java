@@ -6,6 +6,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TableLayout;
 
 import com.google.android.material.tabs.TabLayout;
@@ -26,6 +27,10 @@ public class HomePage extends AppCompatActivity {
         String UserName = intent.getStringExtra("UserName");
         String Phone = intent.getStringExtra("Phone");
 
+
+//        if(s!=null)
+        if(Name!=null)
+        Log.d("Name",Name);
 
         ProfileFragment pf=new ProfileFragment();
         Bundle bundle = new Bundle();
