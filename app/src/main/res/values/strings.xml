@@ -23,12 +23,6 @@
     <string name="otp">OTP</string>
     <string name="verify">Verify</string>
     <string name="add">Add</string>
-<<<<<<< HEAD
-    <array name="names">
-        <item>Onion</item>
-        <item>Banana</item>
-        <item>Apple</item>
-=======
   <array name="names">
       <item>Select Gender</item>
       <item>Male</item>
@@ -41,7 +35,6 @@
         <item>Almirah</item>
         <item>Pantry</item>
         <item>Other</item>
->>>>>>> 4b9b3309f23e412d205c7a94ae53e8ccb02d240d
     </array>
 
 </resources>
