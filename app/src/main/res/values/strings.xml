@@ -24,9 +24,17 @@
     <string name="verify">Verify</string>
     <string name="add">Add</string>
   <array name="names">
-      <item>Onion</item>
-      <item>Banana</item>
-      <item>Apple</item>
+      <item>Select Gender</item>
+      <item>Male</item>
+      <item>Female</item>
+      <item>Other</item>
   </array>
+    <array name="store">
+        <item>Select a Place</item>
+        <item>Fridge</item>
+        <item>Almirah</item>
+        <item>Pantry</item>
+        <item>Other</item>
+    </array>
 
 </resources>
