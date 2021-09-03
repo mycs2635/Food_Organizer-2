@@ -82,12 +82,20 @@ public class SignupFragmentNew extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_signup_new, container, false);
+
         crtProfile = v.findViewById(R.id.bt_createprofile);
 
+        name=v.findViewById(R.id.etNamePrfl);
+        gender=v.findViewById(R.id.etGenderPrfl);
+        phone=v.findViewById(R.id.etPhonePrfl);
+        mail=v.findViewById(R.id.etMailPrfl);
+        userName=v.findViewById(R.id.etSetUsernamePrfl);
+        password=v.findViewById(R.id.etSetPassPrfl);
+        cPassword=v.findViewById(R.id.etConfrmPassPrfl);
+        tick=v.findViewById(R.id.checkBoxPrfl);
         crtProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databaseHelper obj=new databaseHelper(getContext());
                 if(checkAllTextFields()){
 
                     rootNode = FirebaseDatabase.getInstance();
@@ -98,11 +106,6 @@ public class SignupFragmentNew extends Fragment {
                             mail.getText().toString(),
                             userName.getText().toString(),
                             password.getText().toString());
-
-//                    Intent verify = new Intent(ProfilePage.this,PhoneNoVerification.class);
-//                    verify.putExtra("phoneNo",phone.getText().toString());
-//                    startActivity(verify);
-
 
                     reference.child(phone.getText().toString()).setValue(newProfile);
                     mAuth.createUserWithEmailAndPassword(mail.getText().toString(),password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -118,9 +121,8 @@ public class SignupFragmentNew extends Fragment {
                     });
                     // Toast.makeText(ProfilePage.this, newProfile.toString(), Toast.LENGTH_SHORT).show();
 
-                    obj.addUser(newProfile);
+//                    obj.addUser(newProfile);
                     Toast.makeText(getContext(),"creating profile", Toast.LENGTH_SHORT).show();
-
                 }
             }
         });
@@ -166,10 +168,10 @@ public class SignupFragmentNew extends Fragment {
             return false;
         }
 
-//        if(!tick.isActivated()){
-//            tick.setError("This field is required");
-//            return false;
-//        }
+        if(!tick.isActivated()){
+            tick.setError("This field is required");
+            return false;
+        }
 
         return true;
     }
