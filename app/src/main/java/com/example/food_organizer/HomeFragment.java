@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -114,7 +116,12 @@ public class HomeFragment extends Fragment {
 
                     @Override
                     public void onClick(View view, int pos) {
-
+                        Fragment fragment = new InventoryFragment();
+                        FragmentManager fm = getActivity().getSupportFragmentManager();
+                        FragmentTransaction ft = fm.beginTransaction();
+                        ft.replace(R.id.fr_layout,fragment);
+                        ft.addToBackStack(null);
+                        ft.commit();
                     }
 
                     @Override
@@ -158,7 +165,6 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
         recyclerView.setHasFixedSize(true);
         ref = FirebaseDatabase.getInstance().getReference();
-
         imageList = new ArrayList<>();
         clearAll();
 

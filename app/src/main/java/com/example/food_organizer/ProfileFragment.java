@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,10 +94,14 @@ public class ProfileFragment extends Fragment {
         //bundle = getArguments();
         if(bundle!=null){
             name.setText(bundle.getString("Name"));
+            Log.d("uuuuuuuuu", bundle.getString("Name"));
             username.setText(bundle.getString("UserName"));
             phone.setText(bundle.getString("Phone"));
             gender.setText(bundle.getString("Gender"));
             mail.setText(bundle.getString("Email"));
+        }
+        else{
+            Log.d("......", "=========");
         }
         return v;
 
