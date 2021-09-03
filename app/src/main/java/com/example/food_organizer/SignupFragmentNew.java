@@ -95,6 +95,7 @@ public class SignupFragmentNew extends Fragment {
         password=v.findViewById(R.id.etSetPassPrfl);
         cPassword=v.findViewById(R.id.etConfrmPassPrfl);
         tick=v.findViewById(R.id.checkBoxPrfl);
+        mAuth=FirebaseAuth.getInstance();
 
         Spinner spin1=(Spinner) v.findViewById(R.id.spin_gender);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.names));
@@ -142,10 +143,10 @@ public class SignupFragmentNew extends Fragment {
             name.setError("This field is required");
             return false;
         }
-        if(gender.length() == 0){
-            gender.setError("This field is required");
-            return false;
-        }
+//        if(gender.length() == 0){
+//            gender.setError("This field is required");
+//            return false;
+//        }
         if(phone.length() == 0){
             phone.setError("This field is required");
             return false;
@@ -174,11 +175,11 @@ public class SignupFragmentNew extends Fragment {
             cPassword.setError("This field should be matched with password");
             return false;
         }
-
-        if(!tick.isActivated()){
-            tick.setError("This field is required");
-            return false;
-        }
+//
+//        if(!tick.isActivated()){
+//            tick.setError("This field is required");
+//            return false;
+//        }
 
         return true;
     }

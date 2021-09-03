@@ -6,47 +6,38 @@
         <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/drawable/button_bg.xml" value="0.1" />
         <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/drawable/edit_text_bg.xml" value="0.1" />
         <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/drawable/et_bg.xml" value="0.1" />
-        <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/activity_create_product_page.xml" value="0.25" />
+        <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/activity_collect.xml" value="0.11574074074074074" />
+        <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/activity_create_product_page.xml" value="0.264" />
+        <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/activity_donation.xml" value="0.161231884057971" />
         <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/activity_home_page.xml" value="0.2" />
         <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/activity_inventory_page.xml" value="0.2" />
+        <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/activity_main.xml" value="0.161231884057971" />
         <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/activity_profile_page.xml" value="0.2" />
+        <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/activity_reset_password.xml" value="0.22592592592592592" />
         <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/activity_user_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/fragment_blank.xml" value="0.11574074074074074" />
         <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/fragment_donation.xml" value="0.11574074074074074" />
         <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/fragment_inventory.xml" value="0.2" />
-        <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/fragment_login_new.xml" value="0.25" />
+        <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/fragment_login_new.xml" value="0.1" />
         <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/fragment_signup_new.xml" value="0.22592592592592592" />
+        <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/image_view.xml" value="0.22592592592592592" />
+        <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/login_tab_fragment.xml" value="0.22592592592592592" />
+        <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/signip_tab_fragment.xml" value="0.13287037037037036" />
+        <entry key="..\:/Users/91957/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/toolbar.xml" value="0.13287037037037036" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-1/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.24375" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-1/app/src/main/res/layout/activity_home_page.xml" value="0.2" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-1/app/src/main/res/layout/activity_inventory_page.xml" value="0.12952898550724637" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-1/app/src/main/res/layout/activity_main.xml" value="0.2234375" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-1/app/src/main/res/layout/activity_profile_page.xml" value="0.14402173913043478" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-2/app/src/main/res/drawable/edit_text_bg.xml" value="0.24375" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-2/app/src/main/res/drawable/ic_baseline_mail.xml" value="0.24375" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-2/app/src/main/res/drawable/ic_launcher_background_image_background.xml" value="0.24375" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-2/app/src/main/res/drawable/out_colour.xml" value="0.24375" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-2/app/src/main/res/layout/activity_home_page.xml" value="0.2234375" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-2/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-2/app/src/main/res/layout/activity_profile_page.xml" value="0.2234375" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-2/app/src/main/res/layout/fragment_donation.xml" value="0.1" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-2/app/src/main/res/layout/fragment_home.xml" value="0.2234375" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-2/app/src/main/res/layout/fragment_inventory.xml" value="0.2078804347826087" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-2/app/src/main/res/layout/fragment_profile.xml" value="0.2234375" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-2/app/src/main/res/layout/toolbar.xml" value="0.1" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_background_image.xml" value="0.24375" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_background_image1.xml" value="0.1234375" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_background_image1_round.xml" value="0.1234375" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/Food_Organizer-2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_background_image_round.xml" value="0.1234375" />
         <entry key="..\:/Users/pavan/AndroidStudioProjects/Food_Organizer-1/app/src/main/res/layout/activity_collect.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/pavan/AndroidStudioProjects/Food_Organizer-1/app/src/main/res/layout/activity_donation.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/pavan/AndroidStudioProjects/Food_Organizer-1/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/pavan/AndroidStudioProjects/Food_Organizer-1/app/src/main/res/layout/fragment_donation.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/pavan/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/activity_collect.xml" value="0.152" />
-        <entry key="..\:/Users/pavan/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/activity_create_product_page.xml" value="0.1816123188405797" />
-        <entry key="..\:/Users/pavan/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/activity_donation.xml" value="0.17481884057971014" />
-        <entry key="..\:/Users/pavan/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/food_details.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/pavan/AndroidStudioProjects/Food_Organizer/app/src/main/res/layout/image_view.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
