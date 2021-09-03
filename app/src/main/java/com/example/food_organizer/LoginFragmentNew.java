@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -186,13 +187,15 @@ public class LoginFragmentNew extends Fragment {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(getContext(), "Logged in successfully", Toast.LENGTH_SHORT).show();
                                   //  Intent intent = new Intent(getActivity(),HomePage.class);
+                                    Log.d("000000000000000000000", "------------"+Email+"---"+user.getName());
+
                                     Intent intent = new Intent(getActivity(),HomePage.class);
-                                    intent.putExtra("Email",Email.toString());
+                                    intent.putExtra("Email",Email);
                                   //  intent.putExtra("Password",Email);
-                                    intent.putExtra("Name",user.getName().toString());
-                                    intent.putExtra("Gender", user.getGender().toString());
-                                    intent.putExtra("Phone",user.getPhone().toString());
-                                    intent.putExtra("UserName",user.getUserName().toString());
+                                    intent.putExtra("Name",user.getName());
+                                    intent.putExtra("Gender", user.getGender());
+                                    intent.putExtra("Phone",user.getPhone());
+                                    intent.putExtra("UserName",user.getUserName());
 //                                    ProfileFragment pf=new ProfileFragment();
 //                                    Bundle bundle = new Bundle();
 //                                    bundle.putString("Name",Name);
