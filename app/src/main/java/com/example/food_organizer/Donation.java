@@ -68,6 +68,9 @@ class Donationdetails{
     public void setPhone(String phone) {
         this.phone = phone;
     }
+    public Donationdetails(){
+
+    }
 
     public Donationdetails(String address, String des, String phone) {
         this.address = address;
