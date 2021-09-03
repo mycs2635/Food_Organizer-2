@@ -87,7 +87,6 @@ public class SignupFragmentNew extends Fragment {
 
         crtProfile = v.findViewById(R.id.bt_createprofile);
 
-
         name=v.findViewById(R.id.etNamePrfl);
         gender=v.findViewById(R.id.etGenderPrfl);
         phone=v.findViewById(R.id.etPhonePrfl);
@@ -102,7 +101,6 @@ public class SignupFragmentNew extends Fragment {
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.names));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin1.setAdapter(adapter);
-
         crtProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
