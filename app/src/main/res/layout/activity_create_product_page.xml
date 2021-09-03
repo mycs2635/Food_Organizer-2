@@ -46,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.738" />
+        app:layout_constraintVertical_bias="0.805" />
 
     <ImageView
         android:id="@+id/img_upld_crtprt"
@@ -78,7 +78,7 @@
         app:layout_constraintVertical_bias="0.247" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spin_store"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -86,7 +86,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.889" />
+        app:layout_constraintVertical_bias="0.663" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtL_crtprdt"
