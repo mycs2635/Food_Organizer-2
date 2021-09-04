@@ -11,7 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -26,7 +28,7 @@ public class ProfileFragment extends Fragment {
 
     private TextView logout;
     TextView name,username,phone,gender,mail;
-    Button edit,change_pass;
+    TextView edit,change_pass;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -75,10 +77,11 @@ public class ProfileFragment extends Fragment {
         View v =  inflater.inflate(R.layout.fragment_profile, container, false);
         name=v.findViewById(R.id.profile_name);
         mail=v.findViewById(R.id.profile_email);
-        gender=v.findViewById(R.id.profile_gender);
+//        gender=v.findViewById(R.id.profile_gender);
         username=v.findViewById(R.id.profile_username);
         phone=v.findViewById(R.id.profile_phone);
-
+        change_pass = v.findViewById(R.id.profile_password);
+        edit = v.findViewById(R.id.profile_edit_profile);
         logout=v.findViewById(R.id.logout);
 
         logout.setOnClickListener(new View.OnClickListener() {
@@ -90,20 +93,46 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        Bundle bundle = getArguments();
-        //bundle = getArguments();
-        if(bundle!=null){
-            name.setText(bundle.getString("Name"));
-            Log.d("uuuuuuuuu", bundle.getString("Name"));
-            username.setText(bundle.getString("UserName"));
-            phone.setText(bundle.getString("Phone"));
-            gender.setText(bundle.getString("Gender"));
-            mail.setText(bundle.getString("Email"));
+        change_pass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),ResetPassword.class);
+                startActivity(intent);
+            }
+        });
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), EditProfile.class);
+                startActivity(intent);
+            }
+        });
+
+//        Bundle bundle = this.getArguments();
+//        bundle = getArguments();
+//        assert getArguments() != null;
+//        if(bundle != null) {
+//            name.setText(bundle.getString("Name"));
+//            username.setText(bundle.getString("UserName"));
+//            phone.setText(bundle.getString("Phone"));
+//            mail.setText(bundle.getString("Email"));
+//        }
+//        else{
+//            Log.d("......", "=========");
+//            Toast.makeText(getContext(),"Null in getArguments",Toast.LENGTH_SHORT).show();
+//        }
+        HomePage hp = (HomePage) getActivity();
+        if(hp!=null) {
+            Customer user = hp.getDetails();
+            name.setText(user.getName());
+            username.setText(user.getUserName());
+            phone.setText(user.getPhone());
+            mail.setText(user.getMail());
         }
-        else{
-            Log.d("......", "=========");
-        }
+        else Toast.makeText(getContext(),"Null pointer exception",Toast.LENGTH_LONG).show();
         return v;
+
 
     }
 }
