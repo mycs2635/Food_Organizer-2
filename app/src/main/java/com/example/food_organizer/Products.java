@@ -2,14 +2,14 @@ package com.example.food_organizer;
 
 public class Products {
     private String productName;
-    private String imgUrl;
     private String exDate;
+    private String place;
 
 
-    public Products(String productName, String imgUrl, String exDate) {
+    public Products(String productName,  String exDate,String place) {
         this.productName = productName;
-        this.imgUrl = imgUrl;
         this.exDate = exDate;
+        this.place=place;
     }
 
     public String getProductName() {
@@ -20,12 +20,12 @@ public class Products {
         this.productName = productName;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
+    public String getPlace() {
+        return place;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public void setPlace(String imgUrl) {
+        this.place = place;
     }
 
     public String getExDate() {
