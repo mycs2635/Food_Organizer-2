@@ -1,6 +1,7 @@
 package com.example.food_organizer;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -16,31 +17,34 @@ public class HomePage extends AppCompatActivity {
  ViewPager2 viewpage;
  FragmentAdapter adapter;
 
+
+ static String Name,UserName,Phone,Email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         Intent intent = getIntent();
-        String Email = intent.getStringExtra("Email");
-        String Name = intent.getStringExtra("Name");
-        String Gender = intent.getStringExtra("Gender");
-        String UserName = intent.getStringExtra("UserName");
-        String Phone = intent.getStringExtra("Phone");
+        Email = intent.getStringExtra("Email");
+        Name = intent.getStringExtra("Name");
+//        String Gender = intent.getStringExtra("Gender");
+        UserName = intent.getStringExtra("UserName");
+        Phone = intent.getStringExtra("Phone");
 
-
+//        fm = getSupportFragmentManager();
 //        if(s!=null)
-        if(Name!=null)
-        Log.d("Name",Name);
+//        if(Name!=null)
+//        Log.d("Name",Name);
 
-        ProfileFragment pf=new ProfileFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("Name",Name);
-        bundle.putString("Gender",Gender);
-        bundle.putString("UserName",UserName);
-        bundle.putString("Phone",Phone);
-        bundle.putString("Email",Email);
-        pf.setArguments(bundle);
-
+//        Fragment pf=new ProfileFragment();
+//        Bundle bundle = new Bundle();
+//        bundle.putString("Name",Name);
+////        bundle.putString("Gender",Gender);
+//        bundle.putString("UserName",UserName);
+//        bundle.putString("Phone",Phone);
+//        bundle.putString("Email",Email);
+//        pf.setArguments(bundle);
+//        fm.beginTransaction().replace(R.id.viewpager2,pf).commit();
 
 
 
@@ -79,5 +83,12 @@ public class HomePage extends AppCompatActivity {
 
 
 
+    }
+
+    public Customer getDetails(){
+//        if(Name!=null && Phone!=null && Email !=null && UserName!= null)
+            return new Customer(Name,Phone,Email,UserName);
+//        else
+//            return new Customer("Sample","123","sample@gmail.com","sample");
     }
 }

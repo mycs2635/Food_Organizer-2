@@ -26,7 +26,12 @@ public class Customer {
 
     }
 
-
+    public Customer(String name, String phone, String mail, String userName) {
+        this.name = name;
+        this.phone = phone;
+        this.mail = mail;
+        this.userName = userName;
+    }
 
     public String getName() {
         return name;
