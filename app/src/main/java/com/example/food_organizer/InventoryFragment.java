@@ -3,15 +3,34 @@ package com.example.food_organizer;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class InventoryFragment extends Fragment {
+
+    RecyclerView recyclerView;
+
+    private DatabaseReference ref;
+    private ArrayList<Products> itemList;
+    private InventoryRecyclerAdapter  recyclerAdaptor;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,19 +74,17 @@ public class InventoryFragment extends Fragment {
     }
 
 
+
+
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View v=inflater.inflate(R.layout.fragment_inventory,container,false);
-        FloatingActionButton add = null;
-        FloatingActionButton edit;
-        FloatingActionButton img;
-//           add.startAnimation( AnimationUtils.loadAnimation(InventoryFragment.this,R.anim.rotate_open_anim));
-        add=(FloatingActionButton)v.findViewById(R.id.floating_add_button);
-        edit=(FloatingActionButton)v.findViewById(R.id.floating_edit_button);
-        img=(FloatingActionButton)v.findViewById(R.id.floating_image_button);
-        edit.setVisibility(View.GONE);
+
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_inventory, container, false);

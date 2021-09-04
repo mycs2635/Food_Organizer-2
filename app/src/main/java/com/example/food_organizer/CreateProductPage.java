@@ -29,6 +29,7 @@ public class CreateProductPage extends AppCompatActivity {
     private TextView tvDate;
     DatePickerDialog.OnDateSetListener setListener;
 
+
     DatabaseReference ref;
 
 
@@ -85,11 +86,13 @@ public class CreateProductPage extends AppCompatActivity {
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(CreateProductPage.this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.store));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(adapter);
+        TextView place= (TextView) spin.getSelectedView();
         addprdt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-//               Products p=new Products(prdtName.getText().toString(),)
+               Products p=new Products(prdtName.getText().toString(),tvDate.getText().toString(),place.getText().toString());
+               Intent intent=new Intent(CreateProductPage.this,InventoryFragment.class);
 
 
             }
