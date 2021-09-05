@@ -26,9 +26,9 @@ public class LoginActivity extends AppCompatActivity {
 
         tabLayout = findViewById(R.id.tab_layout);
         viewpager = findViewById(R.id.view_pager);
-        fb=findViewById(R.id.fab_fb);
-        google=findViewById(R.id.fab_google);
-        twitter =findViewById(R.id.fab_twitter);
+//        fb=findViewById(R.id.fab_fb);
+//        google=findViewById(R.id.fab_google);
+//        twitter =findViewById(R.id.fab_twitter);
 
         tabLayout.addTab(tabLayout.newTab().setText("Login"));
         tabLayout.addTab(tabLayout.newTab().setText("SignUp"));
