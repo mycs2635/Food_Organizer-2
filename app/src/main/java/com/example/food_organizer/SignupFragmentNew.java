@@ -187,11 +187,11 @@ public class SignupFragmentNew extends Fragment { // signuo fragment class
             cPassword.setError("This field should be matched with password");
             return false;
         }
-//
-//        if(!tick.isActivated()){
-//            tick.setError("This field is required");
-//            return false;
-//        }
+
+        if(!tick.isChecked()){
+            tick.setError("This field is required");
+            return false;
+     }
 
         return true;
     }

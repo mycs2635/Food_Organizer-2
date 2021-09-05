@@ -68,7 +68,7 @@ public class CreateProductPage extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month=month+1;
-                String date=day+"/"+month+"/"+year;
+                String date= dayOfMonth+"/"+month+"/"+year;
                 tvDate.setText(date);
 
             }
@@ -84,6 +84,7 @@ public class CreateProductPage extends AppCompatActivity {
         imgCrtPrdt =findViewById(R.id.img_upld_crtprt);
         prdtName =findViewById(R.id.et_name_crtprt);
         addprdt =findViewById(R.id.bt_addprt_Crtprt);
+        //code for dropdown menu
 
         Spinner spin=(Spinner) findViewById(R.id.spin_store);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(CreateProductPage.this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.store));
