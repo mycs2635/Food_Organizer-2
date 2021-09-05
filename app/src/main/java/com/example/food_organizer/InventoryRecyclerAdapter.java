@@ -1,6 +1,7 @@
 package com.example.food_organizer;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,16 +33,17 @@ public class InventoryRecyclerAdapter extends RecyclerView.Adapter<InventoryRecy
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.inventory_items,
                 parent,
                 false);
-        return new InventoryRecyclerAdapter.ViewHolder(v);
+//        return new InventoryRecyclerAdapter.ViewHolder(v);
+        return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull InventoryRecyclerAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // to set image text
         holder.name.setText(itemList.get(position).getProductName());
         holder.date.setText(itemList.get(position).getExDate());
         holder.place.setText(itemList.get(position).getPlace());
-
+//        Log.d("Product: ",itemList.get(position).getProductName());
         // to set image
 //        Glide.with(holder.imageView.getContext()).load(imgList.get(position).getImageUrl()).into(holder.imageView);
     }

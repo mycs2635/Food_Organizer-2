@@ -17,10 +17,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 public class CreateProductPage extends AppCompatActivity {
 
@@ -87,16 +89,31 @@ public class CreateProductPage extends AppCompatActivity {
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(CreateProductPage.this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.store));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(adapter);
-        TextView place= (TextView) spin.getSelectedView();
+//        TextView place= (TextView) spin.getSelectedView();
+        String place = spin.getSelectedItem().toString();
         addprdt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ref= FirebaseDatabase.getInstance().getReference("userProducts");
-                TextView mail=(TextView)findViewById(R.id.profile_email);
-               Products p=new Products(prdtName.getText().toString(),tvDate.getText().toString(),place.getText().toString(),mail.getText().toString());
-                Toast.makeText(CreateProductPage.this, "Added to Inventory", Toast.LENGTH_SHORT).show();
-               ref.child(mail.getText().toString()).setValue(p);
+//                try {
+                    String phone = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getPhoneNumber();
+                    ref = FirebaseDatabase.getInstance().getReference().child("userProducts");
 
+//                TextView mail=(TextView)findViewById(R.id.profile_email);
+//                HomePage hp = new HomePage();
+                    Products p = new Products(prdtName.getText().toString(),
+                            tvDate.getText().toString(),
+                            place,
+                            phone);
+
+                    try {
+                        ref.child(prdtName.getText().toString()).setValue(p);
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(), "Error here", Toast.LENGTH_LONG).show();
+                    }
+                    Toast.makeText(CreateProductPage.this, "Added to Inventory", Toast.LENGTH_SHORT).show();
+//                }catch (Exception e){
+//                    Toast.makeText(getApplicationContext(), "Error here", Toast.LENGTH_LONG).show();
+//                }
             }
         });
 

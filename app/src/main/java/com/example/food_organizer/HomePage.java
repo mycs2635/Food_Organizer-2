@@ -97,4 +97,7 @@ public class HomePage extends AppCompatActivity {
 //        else
 //            return new Customer("Sample","123","sample@gmail.com","sample");
     }
+    public String getPhone(){
+        return Phone;
+    }
 }
