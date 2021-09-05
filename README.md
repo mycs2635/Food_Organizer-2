@@ -60,7 +60,7 @@ Our app helps them to add the products to the inventory and set an notification 
 
 Our app also helps in donating the food to needy.
 
-We first designed layouts of the app and started learning app devolopment parallelly.
+We first designed layouts of the app and started learning app devolopment parallally.
 
 
 
