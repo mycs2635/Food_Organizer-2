@@ -1,5 +1,6 @@
 package com.example.food_organizer;
-public class Customer {
+public class Customer { // customer class
+   // fields for the user to create sn accout
     private String name;
     private String gender;
     private String phone;
@@ -9,7 +10,7 @@ public class Customer {
     private String cPassword;
     private boolean box;
 
-
+    // constructor for the class
     public Customer (String name, String gender, String phone, String mail, String userName, String password) {
         this.name = name;
         this.gender = gender;
@@ -21,7 +22,7 @@ public class Customer {
 //        this.box=box;
 
     }
-
+    // default constructor
     public Customer(){
 
     }
@@ -32,7 +33,7 @@ public class Customer {
         this.mail = mail;
         this.userName = userName;
     }
-
+    // getters and setters for the fields
     public String getName() {
         return name;
     }

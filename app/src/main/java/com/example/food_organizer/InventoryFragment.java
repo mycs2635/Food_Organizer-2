@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,7 +90,7 @@ public class InventoryFragment extends Fragment {
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //   clearAll();
+                   clearAll();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Products p = new Products();
@@ -101,7 +102,9 @@ public class InventoryFragment extends Fragment {
                     itemList.add(p);
                 }
 //                try {
-
+                    for(int i=0;i<itemList.size();i++){
+                        Log.d("TAG", itemList.get(i).toString());
+                    }
                 recyclerAdaptor = new InventoryRecyclerAdapter(getContext(), itemList);
                 recyclerView.setAdapter(recyclerAdaptor);
                 recyclerAdaptor.notifyDataSetChanged();

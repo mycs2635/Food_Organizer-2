@@ -51,18 +51,11 @@ import java.util.Objects;
  */
 public class LoginFragmentNew extends Fragment {
 
-
+    // declaring the variables
     SignInButton google;
     GoogleSignInClient mGoogleSignInClient;
     private static int RC_SIGN_IN=100;
 
-
-    /////////////////////////////////////////////
-
-
-
-
-    ///////////////////////////////////////////////
 
     DatabaseReference ref;
     // TODO: Rename parameter arguments, choose names that match
@@ -82,7 +75,7 @@ public class LoginFragmentNew extends Fragment {
 
        private FirebaseAuth mAuth;
 //    databaseHelper db = new databaseHelper.getContext(LoginFragmentNew.this);
-    EditText email,password;
+    EditText email,password;   // contents in this page
     Button signIn;
     TabLayout tabLayout;
     ViewPager2 pager2;
@@ -107,7 +100,7 @@ public class LoginFragmentNew extends Fragment {
     }
 
     @Override
-    public void onStart() {
+    public void onStart() {  // on star of the authentication
         super.onStart();
 
         FirebaseUser user = mAuth.getCurrentUser();
@@ -120,7 +113,7 @@ public class LoginFragmentNew extends Fragment {
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {  // oncreation
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -134,60 +127,45 @@ public class LoginFragmentNew extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,   // on reate view
                              Bundle savedInstanceState) {
 
         TextView forgetPass;
         ref= FirebaseDatabase.getInstance().getReference();
 
-        mAuth=FirebaseAuth.getInstance();
+        mAuth=FirebaseAuth.getInstance();  // instance of firebase authentication
         if(mAuth.getCurrentUser()!=null){
-            Intent intent = new Intent(getActivity(),HomePage.class);
+            Intent intent = new Intent(getActivity(),HomePage.class);  //starting a new intent
 //            intent.putExtra("Email",Email);
 //            //  intent.putExtra("Password",Email);
 //            intent.putExtra("Name",user.getName());
 //            intent.putExtra("Gender", user.getGender());
 //            intent.putExtra("Phone",user.getPhone());
 //            intent.putExtra("UserName",user.getUserName());
-            startActivity(intent);
+            startActivity(intent); // starting activity of home class
         }
 
         // Inflate the layout for this fragment
 
         View v= inflater.inflate(R.layout.fragment_login_new, container, false);
-        email= v.findViewById(R.id.etMaillogin);
+        email= v.findViewById(R.id.etMaillogin);  // storing the values based on the id in loginfragmetnewxml file
         password=v.findViewById(R.id.etPasswordlogin);
         signIn=v.findViewById(R.id.bt_SignInLogin);
         mAuth = FirebaseAuth.getInstance();
         forgetPass = v.findViewById(R.id.tv_forgot_pass);
-//        if(mAuth.getCurrentUser() != null){
-//            Intent gotoHome = new Intent(getActivity(),HomePage.class);
-//            startActivity(gotoHome);
-//            getActivity().finish();
-//        }
-
         google=v.findViewById(R.id.sign_in_button);
-        //////////////////////////////////////////////////////////////
-
-
-        // *****************************************************
-
-
-
-        // *********************************************************
-        ///////////////////////////////////////////////////////////////
         createRequest();
 
 
 
-        forgetPass.setOnClickListener(new View.OnClickListener() {
+        forgetPass.setOnClickListener(new View.OnClickListener() { // on clicking the forget password
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(),ResetPassword.class);
+                Intent intent = new Intent(getContext(),ResetPassword.class);  // moving to the resetpassword class
                 startActivity(intent);
             }
         });
-        signIn.setOnClickListener(new View.OnClickListener() {
+        signIn.setOnClickListener(new View.OnClickListener() {  // on clicking the signinbutton
             @Override
             public void onClick(View view) {
 ////
@@ -197,17 +175,8 @@ public class LoginFragmentNew extends Fragment {
                 String Gender="";
                 String Email = email.getText().toString().trim();
                 String Password = password.getText().toString().trim();
-               /* if(TextUtils.isEmpty(Email)){
-                   email.setError("Email is required");return;
-                }
-               if(TextUtils.isEmpty(Password)){password.setError("Password is required");
-                    return;
-                }
-                if(Password.length() < 6){
-                    password.setError("Password must be at least 8 characters long");
-                 return;
-              }*/
 
+                // validating the email and password entered
                 if(Email.equals("1") && Password.equals("1")){
                     Toast.makeText(getContext(), "Logged in successfully", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getActivity(), HomePage.class));
@@ -223,11 +192,7 @@ public class LoginFragmentNew extends Fragment {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-
-//                                    user.setImageUrl(dataSnapshot.child("imageUrl").getValue().toString());
-//                                    images.setImageName(dataSnapshot.child("imageName").getValue().toString());
-//
-
+                                    // setting the data given by the user
                                     if(dataSnapshot.child("mail").getValue().toString().equals(Email)){
                                         user.setUserName(dataSnapshot.child("userName").getValue().toString());
                                       user.setPhone(dataSnapshot.child("phone").getValue().toString());
@@ -248,12 +213,12 @@ public class LoginFragmentNew extends Fragment {
                         mAuth.signInWithEmailAndPassword(Email, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
 
-                            public void onComplete(@NonNull Task<AuthResult> task) {
+                            public void onComplete(@NonNull Task<AuthResult> task) { //on completion
 
-                                if (task.isSuccessful()) {
+                                if (task.isSuccessful()) { // if the task is successful
                                     Toast.makeText(getContext(), "Logged in successfully", Toast.LENGTH_SHORT).show();
                                   //  Intent intent = new Intent(getActivity(),HomePage.class);
-                                    Log.d("000000000000000000000", "------------"+Email+"---"+user.getName());
+                                   // Log.d("000000000000000000000", "------------"+Email+"---"+user.getName());
 
                                     Intent intent = new Intent(getActivity(),HomePage.class);
                                     intent.putExtra("Email",Email);
@@ -288,7 +253,7 @@ public class LoginFragmentNew extends Fragment {
 
 }
 
-    private void createRequest() {
+    private void createRequest() { // creating the request for google authetication
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 //.requestIdToken(getString(R.string.default_web_client_id)) ////////////////
@@ -353,7 +318,7 @@ public class LoginFragmentNew extends Fragment {
 
 
 
-    private boolean validateEmail(){
+    private boolean validateEmail(){  // function to validate the email
         String Email = email.getText().toString();
         if(Email.isEmpty()){
             email.setError("Email is required");
@@ -364,7 +329,7 @@ public class LoginFragmentNew extends Fragment {
             return true;
         }
     }
-    private boolean validatePass(){
+    private boolean validatePass(){  // validating the email entered by user
         String Password = password.getText().toString();
         if(Password.isEmpty()){
             password.setError("Password is required");

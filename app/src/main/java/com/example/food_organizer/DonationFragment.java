@@ -33,8 +33,9 @@ public class DonationFragment extends Fragment {
         // Required empty public constructor
     }
     ImageView donate,collect;
+    // for the donation page
     public static DonationFragment newInstance(String param1, String param2) {
-        DonationFragment fragment = new DonationFragment();
+        DonationFragment fragment = new DonationFragment(); // instantiating
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -56,10 +57,11 @@ public class DonationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_donation, container, false);
+
         donate=v.findViewById(R.id.img_donate);
         collect=v.findViewById(R.id.img_collect);
         donate.setOnClickListener(new View.OnClickListener() {
-            @Override
+            @Override  // to go to the donate page
             public void onClick(View view) {
                 Toast.makeText(getContext(), " Entering donation page", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getActivity(),Donation.class));
@@ -67,6 +69,7 @@ public class DonationFragment extends Fragment {
         });
         collect.setOnClickListener(new View.OnClickListener() {
             @Override
+            // to go to the collect page
             public void onClick(View view) {
                 Toast.makeText(getContext(), " Entering collect page", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getActivity(),Collect.class));

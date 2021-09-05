@@ -41,7 +41,7 @@ public class HomeFragment extends Fragment {
 
     Button add;
 
-    private ArrayList<Images> imageList;
+    private ArrayList<Images> imageList;  // array of images
     private RecyclerAdaptor recyclerAdaptor;
     private Context homeContext;
     // TODO: Rename parameter arguments, choose names that match
@@ -90,7 +90,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void getDataFromFirebase() {
-
+        // to get the data from the forebase
         Query query = ref.child("images");
 
         query.addValueEventListener(new ValueEventListener() {
@@ -101,7 +101,7 @@ public class HomeFragment extends Fragment {
                     Images images = new Images();
                     images.setImageUrl(dataSnapshot.child("imageUrl").getValue().toString());
                     images.setImageName(dataSnapshot.child("imageName").getValue().toString());
-                    imageList.add(images);
+                    imageList.add(images);  // adding the image to the imagelst
                 }
                 try {
 
