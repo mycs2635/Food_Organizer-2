@@ -19,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -79,29 +80,34 @@ public class InventoryFragment extends Fragment {
     }
 
 
+    HomePage hp = (HomePage) getActivity();
 
     private void getDataFromFirebase() {
 
-        Query query = ref.child("userProducts");
+        Query query = ref.child("userProducts").child("apple");
 
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //   clearAll();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
                     Products p = new Products();
+                    p.setProductName(dataSnapshot.child("productName").getValue(String.class));
+                    p.setExDate(dataSnapshot.child("exDate").getValue(String.class));
+                    p.setPlace(dataSnapshot.child("place").getValue(String.class));
 //                    p.setImageUrl(dataSnapshot.child("imageUrl").getValue().toString());
 //                    images.setImageName(dataSnapshot.child("imageName").getValue().toString());
                     itemList.add(p);
                 }
-                try {
+//                try {
 
-                    recyclerAdaptor = new InventoryRecyclerAdapter(getContext(), itemList);
-                    recyclerView.setAdapter(recyclerAdaptor);
-                    recyclerAdaptor.notifyDataSetChanged();
-                } catch (Exception e) {
-                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
+                recyclerAdaptor = new InventoryRecyclerAdapter(getContext(), itemList);
+                recyclerView.setAdapter(recyclerAdaptor);
+                recyclerAdaptor.notifyDataSetChanged();
+//                } catch (Exception e) {
+//                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+//                }
 
 
             }

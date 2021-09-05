@@ -4,15 +4,30 @@ public class Products {
     private String productName;
     private String exDate;
     private String place;
-    private String email;
+    private String phone;
 
 
-    public Products(String productName,  String exDate,String place,String email) {
+    public Products(String productName,  String exDate,String place,String phone) {
         this.productName = productName;
         this.exDate = exDate;
         this.place=place;
-        this.email=email;
+        this.phone=phone;
     }
+
+    public Products(String productName, String exDate, String place) {
+        this.productName = productName;
+        this.exDate = exDate;
+        this.place = place;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public Products(){
 
     }
