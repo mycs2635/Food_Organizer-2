@@ -21,10 +21,6 @@ public class FragmentAdapterNew extends FragmentStateAdapter {
         {
             case 1:
                 return new SignupFragmentNew();
-//            case 2:
-//                return new ProfileFragment();
-//            case 3:
-//                return new DonationFragment();
         }
         return new LoginFragmentNew();
     }

@@ -24,9 +24,9 @@ import org.w3c.dom.Text;
  * Use the {@link ProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment {  // page for the profile section
 
-    private TextView logout;
+    private TextView logout;  // logout to get logged out from app
     TextView name,username,phone,gender,mail;
     TextView edit,change_pass;
     // TODO: Rename parameter arguments, choose names that match
@@ -75,6 +75,7 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View v =  inflater.inflate(R.layout.fragment_profile, container, false);
+        // to get the details from the database to display it on the profile page
         name=v.findViewById(R.id.profile_name);
         mail=v.findViewById(R.id.profile_email);
 //        gender=v.findViewById(R.id.profile_gender);
@@ -84,16 +85,16 @@ public class ProfileFragment extends Fragment {
         edit = v.findViewById(R.id.profile_edit_profile);
         logout=v.findViewById(R.id.logout);
 
-        logout.setOnClickListener(new View.OnClickListener() {
+        logout.setOnClickListener(new View.OnClickListener() { // on clicking the logout
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
+                FirebaseAuth.getInstance().signOut();  // to signout from the app
                 Intent intent = new Intent(getContext(),MainActivity.class);
                 startActivity(intent);
             }
         });
 
-        change_pass.setOnClickListener(new View.OnClickListener() {
+        change_pass.setOnClickListener(new View.OnClickListener() { // to change password
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(),ResetPassword.class);
@@ -101,7 +102,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        edit.setOnClickListener(new View.OnClickListener() {
+        edit.setOnClickListener(new View.OnClickListener() {  // to edit the profile
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), EditProfile.class);
@@ -109,19 +110,6 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-//        Bundle bundle = this.getArguments();
-//        bundle = getArguments();
-//        assert getArguments() != null;
-//        if(bundle != null) {
-//            name.setText(bundle.getString("Name"));
-//            username.setText(bundle.getString("UserName"));
-//            phone.setText(bundle.getString("Phone"));
-//            mail.setText(bundle.getString("Email"));
-//        }
-//        else{
-//            Log.d("......", "=========");
-//            Toast.makeText(getContext(),"Null in getArguments",Toast.LENGTH_SHORT).show();
-//        }
         HomePage hp = (HomePage) getActivity();
         if(hp!=null) {
             Customer user = hp.getDetails();

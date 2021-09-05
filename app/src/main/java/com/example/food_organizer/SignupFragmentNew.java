@@ -29,8 +29,8 @@ import com.google.firebase.database.FirebaseDatabase;
  * Use the {@link SignupFragmentNew#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SignupFragmentNew extends Fragment {
-
+public class SignupFragmentNew extends Fragment { // signuo fragment class
+    // this is to create an account for the new user
 
     private Button crtProfile;
     EditText name,gender,phone,mail,userName,password,cPassword;
@@ -88,6 +88,7 @@ public class SignupFragmentNew extends Fragment {
         View v = inflater.inflate(R.layout.fragment_signup_new, container, false);
 
         crtProfile = v.findViewById(R.id.bt_createprofile);
+        // here we get the data entered by the user
 
         name=v.findViewById(R.id.etNamePrfl);
 //        gender=v.findViewById(R.id.etGenderPrfl);
@@ -142,7 +143,7 @@ public class SignupFragmentNew extends Fragment {
         return v;
     }
 
-    private boolean checkAllTextFields(){
+    private boolean checkAllTextFields(){  // checkinfg all the fields enterd by the user whether it is valid or not
         if(name.length() == 0){
             name.setError("This field is required");
             return false;
@@ -158,19 +159,19 @@ public class SignupFragmentNew extends Fragment {
             Toast.makeText(getContext(),"Select gender ",Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(phone.length() == 0){
+        if(phone.length() == 0){  // valid phone
             phone.setError("This field is required");
             return false;
         }
-        if(mail.length() == 0){
+        if(mail.length() == 0){ // valid mail id
             mail.setError("This field is required");
             return false;
         }
-        if(userName.length() == 0){
+        if(userName.length() == 0){  // valid user name
             userName.setError("This field is required");
             return false;
         }
-        if(password.length() == 0){
+        if(password.length() == 0){ // to set the password based on constraints
             password.setError("This field is required");
             return false;
         }

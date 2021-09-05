@@ -46,12 +46,6 @@ public class ProfilePage extends AppCompatActivity {
         cPassword=findViewById(R.id.etConfrmPassPrfl);
         tick=findViewById(R.id.checkBoxPrfl);
 
-//        if(mAuth.getCurrentUser() != null){
-//            Intent gotoHome = new Intent(getApplicationContext(),HomePage.class);
-//            startActivity(gotoHome);
-//            finish();
-//        }
-        //button listener for create profile
         crtProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,11 +130,6 @@ public class ProfilePage extends AppCompatActivity {
             cPassword.setError("This field should be matched with password");
             return false;
         }
-
-//        if(!tick.isActivated()){
-//            tick.setError("This field is required");
-//            return false;
-//        }
 
         return true;
     }

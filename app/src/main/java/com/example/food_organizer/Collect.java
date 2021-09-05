@@ -53,24 +53,8 @@ public class Collect extends AppCompatActivity {
                 }catch (Exception e){
                     Toast.makeText(Collect.this,e.getMessage(),Toast.LENGTH_SHORT).show();
                 }
-//                recyclerView.addOnItemTouchListener(new HomeFragment.RcyclrTouchList(getContext(),recyclerView,new HomeFragment.Clicklstnr(){
-//
-//
-//                    @Override
-//                    public void onClick(View view, int pos) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onLongClick(View view, int pos) {
-//
-//                    }
-//                }));
 
             }
-
-
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

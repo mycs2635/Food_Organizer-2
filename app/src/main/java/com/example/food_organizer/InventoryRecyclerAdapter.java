@@ -20,7 +20,7 @@ public class InventoryRecyclerAdapter extends RecyclerView.Adapter<InventoryRecy
     private Context inventoryContext;
     private ArrayList<Products> itemList;
 
-
+    // recycler adaptor for the items added by the user to his inventory
     public InventoryRecyclerAdapter(Context inventoryContext, ArrayList<Products> itemList) {
         this.inventoryContext = inventoryContext;
         this.itemList = itemList;

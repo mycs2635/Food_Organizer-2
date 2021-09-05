@@ -37,20 +37,6 @@ public class HomePage extends AppCompatActivity {
         UserName = intent.getStringExtra("UserName");
         Phone = intent.getStringExtra("Phone");
 
-//        fm = getSupportFragmentManager();
-//        if(s!=null)
-//        if(Name!=null)
-//        Log.d("Name",Name);
-
-//        Fragment pf=new ProfileFragment();
-//        Bundle bundle = new Bundle();
-//        bundle.putString("Name",Name);
-////        bundle.putString("Gender",Gender);
-//        bundle.putString("UserName",UserName);
-//        bundle.putString("Phone",Phone);
-//        bundle.putString("Email",Email);
-//        pf.setArguments(bundle);
-//        fm.beginTransaction().replace(R.id.viewpager2,pf).commit();
 
 
 

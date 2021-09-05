@@ -11,14 +11,16 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class Donation extends AppCompatActivity {
+public class Donation extends AppCompatActivity { // donation page
 Button donate;
+// description of the item addres and phone number
 TextView address,description,phone;
 DatabaseReference ref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_donation);
+        setContentView(R.layout.activity_donation);  // viewing the donation page
+        // getting the values based on the ids
         donate=findViewById(R.id.bt_donate);
         address=findViewById(R.id.ed_address);
         description=findViewById(R.id.ed_food_details);
@@ -26,6 +28,7 @@ DatabaseReference ref;
         donate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // to get the instance
                 ref=FirebaseDatabase.getInstance().getReference().child("donation");
                 Donationdetails d=new Donationdetails(address.getText().toString(),description.getText().toString(),phone.getText().toString());
                 try {
@@ -41,11 +44,13 @@ DatabaseReference ref;
         });
     }
 }
-class Donationdetails{
+class Donationdetails{ // details to be gien for the donation
+    // fields required
     private String address;
     private String des;
     private String phone;
 
+    // getters and setters methods for the fields
     public String getAddress() {
         return address;
     }
@@ -72,7 +77,7 @@ class Donationdetails{
     public Donationdetails(){
 
     }
-
+    // constructor for the class
     public Donationdetails(String address, String des, String phone) {
         this.address = address;
         this.des=des;

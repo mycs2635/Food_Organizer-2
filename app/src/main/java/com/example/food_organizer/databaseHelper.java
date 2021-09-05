@@ -64,24 +64,6 @@ public class databaseHelper extends SQLiteOpenHelper {
         return cursor.getCount() > 0;
     }
 
-//    public Customer getUser(String mail){
-//        SQLiteDatabase db=this.getReadableDatabase();
-//        ContentValues cv=new ContentValues();
-//        Cursor cursor = db.query(DATABASE_TABLE,
-//                new String[] {KEY_ID,KEY_NAME,KEY_GENDER,KEY_EMAIL,KEY_PHONE,KEY_USERNAME,KEY_PASSWORD},
-//                KEY_EMAIL+"=?",
-//                new String[] {mail},
-//                null,
-//                null,
-//                null,
-//                null);
-//        if(cursor!=null){
-//            cursor.moveToFirst();
-//
-//        }
-//      //  Cursor cursor = db.rawQuery("SELECT * from users where ")
-//    }
-
     public List<Customer> getAllUsers(){
         List<Customer> allUsers = new ArrayList<>();
         String queryString = "SELECT * FROM "+DATABASE_TABLE;

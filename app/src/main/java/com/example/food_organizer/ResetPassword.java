@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import org.jetbrains.annotations.NotNull;
 
-public class ResetPassword extends AppCompatActivity {
+public class ResetPassword extends AppCompatActivity {// to reset the password
 
     private Button reset;
     private EditText email;
