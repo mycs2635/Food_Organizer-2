@@ -10,19 +10,25 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TableLayout;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.tabs.TabLayout;
 
 public class HomePage extends AppCompatActivity {
  TabLayout tabLayout;
  ViewPager2 viewpage;
  FragmentAdapter adapter;
-
+ GoogleSignInClient googleSignInClient;
 
  static String Name,UserName,Phone,Email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        googleSignInClient = GoogleSignIn.getClient(HomePage.this, GoogleSignInOptions.DEFAULT_SIGN_IN);
+
         setContentView(R.layout.activity_home_page);
         Intent intent = getIntent();
         Email = intent.getStringExtra("Email");
