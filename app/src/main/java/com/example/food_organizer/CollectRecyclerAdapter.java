@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-
+// this is inter face to view items on the collect page from firebase database
 public class CollectRecyclerAdapter extends RecyclerView.Adapter<CollectRecyclerAdapter.ViewHolder>{
     private static final String tag = "Recycler View";
     private Context collectContext;
@@ -50,7 +50,7 @@ public class CollectRecyclerAdapter extends RecyclerView.Adapter<CollectRecycler
         return foodList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder{  // this is the view layout of each food item in collect page
 
         TextView address,description,phone;
 

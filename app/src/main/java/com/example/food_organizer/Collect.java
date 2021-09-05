@@ -20,7 +20,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-
+// Activity where it shows food details to collect food(includes type of food and address where the food is available)
 public class Collect extends AppCompatActivity {
     RecyclerView recyclerView;
 
@@ -29,7 +29,7 @@ public class Collect extends AppCompatActivity {
     private CollectRecyclerAdapter  recyclerAdaptor;
 
 
-
+// method used to get data from firebase and updated in collect activity
     private void getDataFromFirebase() {
 
         Query query = ref.child("donation");
@@ -37,7 +37,7 @@ public class Collect extends AppCompatActivity {
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //   clearAll();
+                   clearAll();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Donationdetails d=new Donationdetails();
                     d.setAddress(dataSnapshot.child("address").getValue(String.class));
