@@ -43,7 +43,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
-
+// login page to enter into app
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link LoginFragmentNew#newInstance} factory method to

@@ -18,6 +18,7 @@ import android.widget.Toast;
  * Use the {@link DonationFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+//This Fragment contains two clickable images one for donating food and other for collecting food
 public class DonationFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -60,14 +61,14 @@ public class DonationFragment extends Fragment {
 
         donate=v.findViewById(R.id.img_donate);
         collect=v.findViewById(R.id.img_collect);
-        donate.setOnClickListener(new View.OnClickListener() {
+        donate.setOnClickListener(new View.OnClickListener() {  // moves to Donate.java for collecting food
             @Override  // to go to the donate page
             public void onClick(View view) {
                 Toast.makeText(getContext(), " Entering donation page", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getActivity(),Donation.class));
             }
         });
-        collect.setOnClickListener(new View.OnClickListener() {
+        collect.setOnClickListener(new View.OnClickListener() {    // moves to collect.java for collecting food
             @Override
             // to go to the collect page
             public void onClick(View view) {
