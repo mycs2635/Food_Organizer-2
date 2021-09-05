@@ -95,14 +95,15 @@ public class CreateProductPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                try {
-                 //   String phone = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getPhoneNumber();
+                    String phone = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getPhoneNumber();
                     ref = FirebaseDatabase.getInstance().getReference().child("userProducts");
 
 //                TextView mail=(TextView)findViewById(R.id.profile_email);
 //                HomePage hp = new HomePage();
                     Products p = new Products(prdtName.getText().toString(),
                             tvDate.getText().toString(),
-                            place);
+                            place);//,
+//                            phone);
 
                     try {
                         ref.child(prdtName.getText().toString()).setValue(p);

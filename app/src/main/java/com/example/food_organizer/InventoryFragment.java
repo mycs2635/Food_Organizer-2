@@ -1,5 +1,6 @@
 package com.example.food_organizer;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -37,6 +38,7 @@ public class InventoryFragment extends Fragment {
     private DatabaseReference ref;
     private ArrayList<Products> itemList;
     private InventoryRecyclerAdapter  recyclerAdaptor;
+    private Context inventoryContext;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -85,7 +87,7 @@ public class InventoryFragment extends Fragment {
 
     private void getDataFromFirebase() {
 
-        Query query = ref.child("userProducts").child("apple");
+        Query query = ref.child("userProducts");
 
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -97,7 +99,6 @@ public class InventoryFragment extends Fragment {
                     p.setProductName(dataSnapshot.child("productName").getValue(String.class));
                     p.setExDate(dataSnapshot.child("exDate").getValue(String.class));
                     p.setPlace(dataSnapshot.child("place").getValue(String.class));
-//                    p.setImageUrl(dataSnapshot.child("imageUrl").getValue().toString());
 //                    images.setImageName(dataSnapshot.child("imageName").getValue().toString());
                     itemList.add(p);
                 }
