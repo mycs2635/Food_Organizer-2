@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 import java.util.Objects;
-
+// this activity used to add an item to inventory where it shows item name and expiry date and place where it stored
 public class CreateProductPage extends AppCompatActivity {
 
     private ImageView imgCrtPrdt;
@@ -66,9 +66,10 @@ public class CreateProductPage extends AppCompatActivity {
 
         setListener=new DatePickerDialog.OnDateSetListener() {
             @Override
+            //method used to display expiry date
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month=month+1;
-                String date=day+"/"+month+"/"+year;
+                String date=dayOfMonth+"/"+month+"/"+year;
                 tvDate.setText(date);
 
             }
@@ -91,7 +92,7 @@ public class CreateProductPage extends AppCompatActivity {
         spin.setAdapter(adapter);
 //        TextView place= (TextView) spin.getSelectedView();
         String place = spin.getSelectedItem().toString();
-        addprdt.setOnClickListener(new View.OnClickListener() {
+        addprdt.setOnClickListener(new View.OnClickListener() {  // when button is clicked items added to inventory
             @Override
             public void onClick(View v) {
 //                try {
