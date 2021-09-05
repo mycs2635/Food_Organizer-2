@@ -46,6 +46,33 @@ Implementation:
     Our Team: 
     G.Pavan Sahith,M.Yethin Chandra Sai,K.Pavan Kalyan ,V.Jaswanth
     
+    
+ ------  How it works  -------
+    
+ At start one should create an account in app by sign up button by filling the required details.
+ 
+ Then after creation one can login through their email and password
+ 
+ Then on successfullsignin it moves to the home page in which we will have 4 fragments
+ inventory
+ home
+ profile 
+ donation
+ 
+ They can have an inventory page in which they will have the products they have and their expiry dates
+ 
+ In the home page they can add the elements that they buy now so that they can have an idea of the expiry date so that they will consume them without wasting 
+ user can select the item which he wanted from the set given below in the page
+ 
+ He can view his profile and if he wants to change it he can change by clicking the edit profile button
+ 
+ There is a donation page which will have 2 cases
+ if the user wants to donate food he can do it by adding the description of the food,phone number and address he/she willing to donate and click donate button
+ If the user wants to recieve there is a collect page where we will have the items that are available and their corresponding addresses so that one can reach out to them
+ 
+ 
+ ------- goal  --
+    
 Our project is to work on one of the SDG Goals and we thought Zero Hunger goal is the right one because it's one of the major problem that our country is facing now.
 
 We got to know that Each day more than 10,000  children die from hunger and related causes.
