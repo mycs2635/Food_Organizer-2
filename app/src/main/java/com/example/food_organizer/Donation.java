@@ -29,6 +29,7 @@ DatabaseReference ref;
                 ref=FirebaseDatabase.getInstance().getReference().child("donation");
                 Donationdetails d=new Donationdetails(address.getText().toString(),description.getText().toString(),phone.getText().toString());
                 try {
+                    Toast.makeText(Donation.this, "Donated", Toast.LENGTH_SHORT).show();
                     ref.child(phone.getText().toString()).setValue(d);
                 }
                 catch(Exception e)  {

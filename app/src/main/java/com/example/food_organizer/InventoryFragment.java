@@ -5,12 +5,17 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -75,18 +80,69 @@ public class InventoryFragment extends Fragment {
 
 
 
+    private void getDataFromFirebase() {
+
+        Query query = ref.child("userProducts");
+
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //   clearAll();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Products p = new Products();
+//                    p.setImageUrl(dataSnapshot.child("imageUrl").getValue().toString());
+//                    images.setImageName(dataSnapshot.child("imageName").getValue().toString());
+                    itemList.add(p);
+                }
+                try {
+
+                    recyclerAdaptor = new InventoryRecyclerAdapter(getContext(), itemList);
+                    recyclerView.setAdapter(recyclerAdaptor);
+                    recyclerAdaptor.notifyDataSetChanged();
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
 
 
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+            }
 
-        View v=inflater.inflate(R.layout.fragment_inventory,container,false);
-
-
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inventory, container, false);
+            });
     }
-}
+            private void clearAll() {
+                if (itemList != null) {
+                    itemList.clear();
+
+                    if (recyclerAdaptor != null) {
+                        recyclerAdaptor.notifyDataSetChanged();
+                    }
+                }
+                itemList = new ArrayList<>();
+            }
+
+            @Override
+            public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                     Bundle savedInstanceState) {
+                // Inflate the layout for this fragment
+
+
+                View view = inflater.inflate(R.layout.fragment_inventory, container, false);
+                recyclerView = (RecyclerView) view.findViewById(R.id.rv_items);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                recyclerView.setHasFixedSize(true);
+                ref = FirebaseDatabase.getInstance().getReference();
+                itemList = new ArrayList<>();
+                clearAll();
+
+                // get data from firebase database
+                getDataFromFirebase();
+
+                return view;
+            }
+
+
+        }

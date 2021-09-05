@@ -4,12 +4,17 @@ public class Products {
     private String productName;
     private String exDate;
     private String place;
+    private String email;
 
 
-    public Products(String productName,  String exDate,String place) {
+    public Products(String productName,  String exDate,String place,String email) {
         this.productName = productName;
         this.exDate = exDate;
         this.place=place;
+        this.email=email;
+    }
+    public Products(){
+
     }
 
     public String getProductName() {
@@ -35,4 +40,5 @@ public class Products {
     public void setExDate(String exDate) {
         this.exDate = exDate;
     }
+
 }

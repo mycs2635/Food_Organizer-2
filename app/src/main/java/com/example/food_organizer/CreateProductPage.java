@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -81,7 +82,7 @@ public class CreateProductPage extends AppCompatActivity {
         imgCrtPrdt =findViewById(R.id.img_upld_crtprt);
         prdtName =findViewById(R.id.et_name_crtprt);
         addprdt =findViewById(R.id.bt_addprt_Crtprt);
-        ref= FirebaseDatabase.getInstance().getReference("userProducts");
+
         Spinner spin=(Spinner) findViewById(R.id.spin_store);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(CreateProductPage.this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.store));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -90,10 +91,11 @@ public class CreateProductPage extends AppCompatActivity {
         addprdt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-               Products p=new Products(prdtName.getText().toString(),tvDate.getText().toString(),place.getText().toString());
-               Intent intent=new Intent(CreateProductPage.this,InventoryFragment.class);
-
+                ref= FirebaseDatabase.getInstance().getReference("userProducts");
+                TextView mail=(TextView)findViewById(R.id.profile_email);
+               Products p=new Products(prdtName.getText().toString(),tvDate.getText().toString(),place.getText().toString(),mail.getText().toString());
+                Toast.makeText(CreateProductPage.this, "Added to Inventory", Toast.LENGTH_SHORT).show();
+               ref.child(mail.getText().toString()).setValue(p);
 
             }
         });
